@@ -1,0 +1,136 @@
+---
+layout: default
+title: "Home Page"
+---
+
+<!-- Loader -->
+<!-- <div class="loader-wrapper">
+  <svg class="mv-svg-title" version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600.000000 594.000000"
+    preserveAspectRatio="xMidYMid meet">
+    <title id='loadingIcon'>Loading icon</title>
+    <desc id="loadingDesc">Spining recycling logo to indicate there is something loading</desc>
+
+    <g id="arrow-bottom" transform="translate(0.000000,594.000000) scale(0.100000,-0.100000)">
+      <path class="text-path"
+        d="M2813,5860,c-873,-59,-1671,-496,-2190,-1200,-76,-102,-184,-274,-227,-358,l-26,-52,37,-33,c276,-237,484,-465,762,-836,546,-727,910,-1324,1215,-1991,l47,-105,63,195,c270,838,634,1581,1145,2340,208,309,496,699,668,905,103,123,351,382,457,475,l49,43,-29,24,c-155,129,-521,330,-759,417,-374,138,-819,202,-1212,176z"
+        transform="translate(-0.76 -0.87)" />
+      <path class="text-path"
+        d="M4797 5068 c-635 -757 -1118 -1814 -1397 -3057 -115 -511 -197 -1059 -245 -1626 -28 -340 -28 -338 14 -145 292 1329 784 2363 1689 3550 186 244 410 492 590 654 l53 48 -27 42 c-143 218 -379 485 -542 614 l-40 32 -95 -112z"
+        transform="translate(-0.76 -0.87)" />
+      <path class="text-path"
+        d="M5474 4319 c-730 -877 -1229 -2178 -1429 -3729 -23 -181 -54 -470 -49 -470 16 0 281 118 374 167 1007 526 1624 1582 1587 2713 -15 438 -105 806 -292 1195 -34 72 -74 150 -88 174 l-25 43 -78 -93z"
+        transform="translate(-0.76 -0.87)" />
+      <path class="text-path"
+        d="M298 4104 c-256 -575 -320 -1233 -178 -1854 127 -559 403 -1046 827 -1460 223 -219 441 -375 710 -512 151 -77 330 -154 338 -147 2 3 -13 108 -35 234 -247 1476 -745 2707 -1446 3575 -51 63 -115 139 -141 169 l-49 54 -26 -59z"
+        transform="translate(-0.76 -0.87)" />
+    </g>
+  </svg>
+</div> -->
+
+<!-- Hero -->
+<section class="et-hero-tabs">
+  <h1>Better Homes and Gardens Real Estate</h1>
+  <div class="et-hero-tabs-container">
+    <a class="et-hero-tab" href="booklet-i-made">Booklet one</a>
+    <a class="et-hero-tab" href="/booklet-one.html">Booklet two</a>
+    <span class="et-hero-tab-slider"></span>
+  </div>
+</section>
+
+<!-- Main -->
+<!-- <main class="et-main">
+  <section class="et-slide" id="tab-es6">
+    <h1>ES6</h1>
+    <h3>something about es6</h3>
+  </section>
+  <section class="et-slide" id="tab-flexbox">
+    <h1>Flexbox</h1>
+    <h3>something about flexbox</h3>
+  </section>
+  <section class="et-slide" id="tab-react">
+    <h1>React</h1>
+    <h3>something about react</h3>
+  </section>
+  <section class="et-slide" id="tab-angular">
+    <h1>Angular</h1>
+    <h3>something about angular</h3>
+  </section>
+  <section class="et-slide" id="tab-other">
+    <h1>Other</h1>
+    <h3>something about other</h3>
+  </section>
+</main> -->
+
+<script>
+  class StickyNavigation {
+
+    constructor() {
+      this.currentId = null;
+      this.currentTab = null;
+      this.tabContainerHeight = 70;
+      let self = this;
+      $('.et-hero-tab').click(function () {
+        self.onTabClick(event, $(this));
+      });
+      $(window).scroll(() => { this.onScroll(); });
+      $(window).resize(() => { this.onResize(); });
+    }
+
+
+
+    onScroll() {
+      this.checkTabContainerPosition();
+      this.findCurrentTabSelector();
+    }
+
+    onResize() {
+      if (this.currentId) {
+        this.setSliderCss();
+      }
+    }
+
+    checkTabContainerPosition() {
+      let offset = $('.et-hero-tabs').offset().top + $('.et-hero-tabs').height() - this.tabContainerHeight;
+      if ($(window).scrollTop() > offset) {
+        $('.et-hero-tabs-container').addClass('et-hero-tabs-container--top');
+      }
+      else {
+        $('.et-hero-tabs-container').removeClass('et-hero-tabs-container--top');
+      }
+    }
+
+    findCurrentTabSelector(element) {
+      let newCurrentId;
+      let newCurrentTab;
+      let self = this;
+      $('.et-hero-tab').each(function () {
+        let id = $(this).attr('href');
+        let offsetTop = $(id).offset().top - self.tabContainerHeight;
+        let offsetBottom = $(id).offset().top + $(id).height() - self.tabContainerHeight;
+        if ($(window).scrollTop() > offsetTop && $(window).scrollTop() < offsetBottom) {
+          newCurrentId = id;
+          newCurrentTab = $(this);
+        }
+      });
+      if (this.currentId != newCurrentId || this.currentId === null) {
+        this.currentId = newCurrentId;
+        this.currentTab = newCurrentTab;
+        this.setSliderCss();
+      }
+    }
+
+    setSliderCss() {
+      let width = 0;
+      let left = 0;
+      if (this.currentTab) {
+        width = this.currentTab.css('width');
+        left = this.currentTab.offset().left;
+      }
+      $('.et-hero-tab-slider').css('width', width);
+      $('.et-hero-tab-slider').css('left', left);
+    }
+
+  }
+
+  new StickyNavigation();
+</script>
