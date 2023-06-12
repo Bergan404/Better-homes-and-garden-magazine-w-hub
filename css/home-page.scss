@@ -1,6 +1,10 @@
 ---
 ---
 
+.container{
+    max-width: 1200px !important;
+}
+
 .overlay {
     position: absolute;
     width: 100%;
@@ -190,8 +194,8 @@ body {
     .col-5 {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 auto;
-        flex: 0 0 auto;
-        width: 80%;
+        flex: 0 0 auto !important;
+        width: 80% !important;
     }
 
     .each-book .background-image .title {

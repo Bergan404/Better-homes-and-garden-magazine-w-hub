@@ -16,9 +16,9 @@ permalink: listing-presentation
                         <div class="container">
                             <div class="magazine">
                                 <!-- Next button -->
-                                <div ignore="1" class="next-button"></div>
+                                <div ignore="1" class="next-button next-button-hover"></div>
                                 <!-- Previous button -->
-                                <div ignore="1" class="previous-button"></div>
+                                <div ignore="1" class="previous-button previous-button-hover"></div>
                             </div>
                         </div>
                     </div>
@@ -60,9 +60,42 @@ permalink: listing-presentation
                 // Load the page
 
                 img.attr('src', 'book-one/pages/' + page + '.jpg');
-
-
             }
+
+            // Load large page
+
+            function loadLargePage(page, pageElement) {
+
+                var img = $('<img />');
+
+                img.load(function () {
+
+                    var prevImg = pageElement.find('img');
+                    $(this).css({ width: '100%', height: '100%' });
+                    $(this).appendTo(pageElement);
+                    prevImg.remove();
+
+                });
+
+                // Loadnew page
+
+                img.attr('src', 'book-two/pages/' + page + '.jpg');
+            }
+
+            // Load small page
+
+            function loadSmallPage(page, pageElement) {
+
+                var img = pageElement.find('img');
+
+                img.css({ width: '100%', height: '100%' });
+
+                img.unbind('load');
+                // Loadnew page
+
+                img.attr('src', 'book-two/pages/' + page + '.jpg');
+            }
+
 
             var audio = document.getElementById("audio");
 
@@ -368,19 +401,19 @@ permalink: listing-presentation
 
                 $('.next-button').bind($.mouseEvents.over, function () {
 
-                    $(this).addClass('next-button-hover');
+                    // $(this).addClass('next-button-hover');
 
                 }).bind($.mouseEvents.out, function () {
 
-                    $(this).removeClass('next-button-hover');
+                    // $(this).removeClass('next-button-hover');
 
                 }).bind($.mouseEvents.down, function () {
 
-                    $(this).addClass('next-button-down');
+                    // $(this).addClass('next-button-down');
 
                 }).bind($.mouseEvents.up, function () {
 
-                    $(this).removeClass('next-button-down');
+                    // $(this).removeClass('next-button-down');
 
                 }).click(function () {
 
@@ -392,19 +425,19 @@ permalink: listing-presentation
 
                 $('.previous-button').bind($.mouseEvents.over, function () {
 
-                    $(this).addClass('previous-button-hover');
+                    // $(this).addClass('previous-button-hover');
 
                 }).bind($.mouseEvents.out, function () {
 
-                    $(this).removeClass('previous-button-hover');
+                    // $(this).removeClass('previous-button-hover');
 
                 }).bind($.mouseEvents.down, function () {
 
-                    $(this).addClass('previous-button-down');
+                    // $(this).addClass('previous-button-down');
 
                 }).bind($.mouseEvents.up, function () {
 
-                    $(this).removeClass('previous-button-down');
+                    // $(this).removeClass('previous-button-down');
 
                 }).click(function () {
 

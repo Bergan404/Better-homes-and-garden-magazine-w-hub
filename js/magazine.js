@@ -117,40 +117,6 @@ function processRegion(region, regionType) {
 
 }
 
-// Load large page
-
-function loadLargePage(page, pageElement) {
-
-	var img = $('<img />');
-
-	img.load(function() {
-
-		var prevImg = pageElement.find('img');
-		$(this).css({width: '100%', height: '100%'});
-		$(this).appendTo(pageElement);
-		prevImg.remove();
-
-	});
-
-	// Loadnew page
-
-	img.attr('src', 'pages/' +  page + '-large.jpg');
-}
-
-// Load small page
-
-function loadSmallPage(page, pageElement) {
-
-	var img = pageElement.find('img');
-
-	img.css({width: '100%', height: '100%'});
-
-	img.unbind('load');
-	// Loadnew page
-
-	img.attr('src', 'pages/' +  page + '.jpg');
-}
-
 // http://code.google.com/p/chromium/issues/detail?id=128488
 
 function isChrome() {

@@ -1,13 +1,6 @@
 ---
 ---
 
-// body{
-// 	overflow:hidden;
-// 	background-color:#fcfcfc;
-// 	margin:0;
-// 	padding:0;
-// }
-
 .magazine-viewport .container{
 	position:absolute;
 	top:50%;
@@ -94,12 +87,12 @@
 	width:100%;
 	height:100%;
 
-	background:-webkit-gradient(linear, left top, right top, color-stop(0.95, rgba(0,0,0,0)), color-stop(1, rgba(0,0,0,0.2)));
-	background-image:-webkit-linear-gradient(left, rgba(0,0,0,0) 95%, rgba(0,0,0,0.2) 100%);
-	background-image:-moz-linear-gradient(left, rgba(0,0,0,0) 95%, rgba(0,0,0,0.2) 100%);
-	background-image:-ms-linear-gradient(left, rgba(0,0,0,0) 95%, rgba(0,0,0,0.2) 100%);
-	background-image:-o-linear-gradient(left, rgba(0,0,0,0) 95%, rgba(0,0,0,0.2) 100%);
-	background-image:linear-gradient(left, rgba(0,0,0,0) 95%, rgba(0,0,0,0.2) 100%);
+	// background:-webkit-gradient(linear, left top, right top, color-stop(0.95, rgba(0,0,0,0)), color-stop(1, rgba(0,0,0,0.2)));
+	// background-image:-webkit-linear-gradient(left, rgba(0,0,0,0) 95%, rgba(0,0,0,0.2) 100%);
+	// background-image:-moz-linear-gradient(left, rgba(0,0,0,0) 95%, rgba(0,0,0,0.2) 100%);
+	// background-image:-ms-linear-gradient(left, rgba(0,0,0,0) 95%, rgba(0,0,0,0.2) 100%);
+	// background-image:-o-linear-gradient(left, rgba(0,0,0,0) 95%, rgba(0,0,0,0.2) 100%);
+	background-image:linear-gradient(to right, rgba(0,0,0,0) 95%, rgba(0,0,0,0.2) 100%);
 }
 
 .magazine .odd .gradient{
@@ -109,12 +102,12 @@
 	width:100%;
 	height:100%;
 
-	background:-webkit-gradient(linear, right top, left top, color-stop(0.95, rgba(0,0,0,0)), color-stop(1, rgba(0,0,0,0.15)));
-	background-image:-webkit-linear-gradient(right, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
-	background-image:-moz-linear-gradient(right, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
-	background-image:-ms-linear-gradient(right, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
-	background-image:-o-linear-gradient(right, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
-	background-image:linear-gradient(right, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
+	// background:-webkit-gradient(linear, right top, left top, color-stop(0.95, rgba(0,0,0,0)), color-stop(1, rgba(0,0,0,0.15)));
+	// background-image:-webkit-linear-gradient(right, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
+	// background-image:-moz-linear-gradient(right, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
+	// background-image:-ms-linear-gradient(right, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
+	// background-image:-o-linear-gradient(right, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
+	background-image:linear-gradient(to left, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
 }
 
 .magazine-viewport .zoom-in .even .gradient,
@@ -175,26 +168,30 @@
 
 .magazine-viewport .previous-button-hover,
 .magazine-viewport .next-button-hover{
-	background-color:rgba(0,0,0, 0.2);
+	// background-color:rgba(0,0,0, 0.2);
 }
 
 .magazine-viewport .previous-button-hover,
 .magazine-viewport .previous-button-down{
-	background-image:url(../img/arrows.png);
-	background-position:-4px 284px;
+	background-image:url(../img/arrows-gray.png);
+	// background-position:-4px 284px;
+	background-position:-6px;
 	background-repeat:no-repeat;
+	cursor: pointer;
 }
 
 .magazine-viewport .previous-button-down,
 .magazine-viewport .next-button-down{
-	background-color:rgba(0,0,0, 0.4);
+	// background-color:rgba(0,0,0, 0.4);
 }
 
 .magazine-viewport .next-button-hover,
 .magazine-viewport .next-button-down{
-	background-image:url(../img/arrows.png);
-	background-position:-38px 284px;
+	background-image:url(../img/arrows-gray.png);
+	// background-position:-38px 284px;
+	background-position:-34px;
 	background-repeat:no-repeat;
+	cursor: pointer;
 }
 
 .magazine-viewport .zoom-in .next-button,
