@@ -26,12 +26,35 @@ permalink: listing-presentation
             </div>
         </div>
 
+        <div class="share-print">
+            <a href="/">
+                <i class="fa-solid fa-house"></i>
+            </a>
+            <a target="_blank" href="book-one/uploads/Listing-Presentation.pdf">
+                <i class="fa-solid fa-print"></i>
+            </a>
+            <button id="copyButton" class="copy-button">
+                <i class="fas fa-solid fa-share"></i>
+            </button>
+        </div>
+
         <audio id="audio" class="audio">
             <source src="sounds/page-flip-4.mp3" type="audio/mpeg">
         </audio>
 
 
         <script type="text/javascript">
+
+            document.getElementById('copyButton').addEventListener('click', function () {
+                var dummyElement = document.createElement('textarea');
+                dummyElement.value = window.location.href;
+                document.body.appendChild(dummyElement);
+                dummyElement.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummyElement);
+
+                alert('URL has been copied!');
+            });
 
             function loadPage(page, pageElement) {
 
@@ -79,7 +102,7 @@ permalink: listing-presentation
 
                 // Loadnew page
 
-                img.attr('src', 'book-two/pages/' + page + '.jpg');
+                img.attr('src', 'book-one/pages/' + page + '.jpg');
             }
 
             // Load small page
@@ -93,7 +116,7 @@ permalink: listing-presentation
                 img.unbind('load');
                 // Loadnew page
 
-                img.attr('src', 'book-two/pages/' + page + '.jpg');
+                img.attr('src', 'book-one/pages/' + page + '.jpg');
             }
 
 
