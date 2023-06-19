@@ -435,3 +435,34 @@
 .hidden {
 	visibility: hidden;
 }
+
+.mobile-canvas {
+	display: none;
+}
+
+#imageContainer {
+	text-align: center;
+	margin-top: 2em;
+
+	img {
+		width: 80%;
+	}
+}
+
+@media (max-width: 700px) {
+	#canvas {
+		display: none !important;
+	}
+	.mobile-canvas {
+		display: block;
+		margin-top: 2em !important;
+	}
+
+	.share-print {
+		left: 0;
+		right: 0;
+		flex-direction: row;
+		justify-content: center;
+		width: 100%;
+	}
+}
