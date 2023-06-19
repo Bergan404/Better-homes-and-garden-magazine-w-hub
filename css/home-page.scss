@@ -13,6 +13,7 @@
     left: 0px;
     z-index: 0;
     background-color: rgba(0,0,0,0.6);
+    border-radius: 25px;
 }
 
 #home {
@@ -27,6 +28,7 @@ body {
 
 .each-book {
     // height: 500px;
+    border-radius: 15px;
 
     a {
         text-decoration: none;
@@ -36,11 +38,13 @@ body {
     .background-image {
         height: 100%;
         position: relative;
+        border-radius: 25px;
 
         img {
             width: 100%;
             height: 100%;
             object-fit: fill;
+            border-radius: 25px;
         }
 
         .title {
