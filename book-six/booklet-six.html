@@ -34,9 +34,21 @@ permalink: agent-market-chart-social
         <a target="_blank" href="book-six/uploads/Agent-Market-Chart-Social.jpg">
             <i class="fa-solid fa-print"></i>
         </a>
-        <button id="copyButton" class="copy-button">
+        <button id="copyButton" class="view-modal">
             <i class="fas fa-solid fa-share"></i>
         </button>
+    </div>
+    <div class="pop-up-overlay"></div>
+    <div class="popup">
+        <header>
+            <div class="close"><i class="fa-solid fa-x"></i></div>
+        </header>
+        <div class="content">
+            <div class="field">
+                <p id="url-copy"></p>
+                <p class="copied">copied</p>
+            </div>
+        </div>
     </div>
 
     <audio id="audio" class="audio">
@@ -67,8 +79,8 @@ permalink: agent-market-chart-social
             dummyElement.select();
             document.execCommand('copy');
             document.body.removeChild(dummyElement);
-
-            alert('URL has been copied!');
+            document.getElementById('url-copy').innerHTML = window.location.href;
+            console.log(window.location.href)
         });
 
         function loadPage(page, pageElement) {
