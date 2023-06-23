@@ -12,7 +12,7 @@
     top: 0px;
     left: 0px;
     z-index: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    // background-color: rgba(0, 0, 0, 0.3);
     border-radius: 25px;
 }
 
@@ -56,8 +56,11 @@ body {
             right: 0;
             text-align: center;
             text-transform: capitalize;
-            font-weight: 300;
+            font-weight: 800;
             text-shadow: 0px 0px 7px black;
+            -webkit-text-stroke: 1px black;
+            -webkit-text-fill-color: white;
+            font-family: 'Poppins';
         }
     }
 }
