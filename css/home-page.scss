@@ -1,7 +1,7 @@
 ---
 ---
 
-.container{
+.container {
     max-width: 1200px !important;
 }
 
@@ -12,12 +12,12 @@
     top: 0px;
     left: 0px;
     z-index: 0;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 25px;
 }
 
 #home {
-    background: linear-gradient(135deg, black, #343334);
+    background: linear-gradient(135deg, rgb(22, 22, 22), #343334);
     position: relative;
 }
 
@@ -164,6 +164,130 @@ body {
 .cursor2 {
     --size: 2px;
     transition-duration: .7s;
+}
+
+.pop-up-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.275);
+    z-index: 90;
+    opacity: 0;
+}
+
+.pop-up-overlay.seen {
+    opacity: 1;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+::selection {
+    color: #fff;
+    background: #7d2ae8;
+}
+
+.popup {
+    position: absolute;
+    left: 50%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    top: -150%;
+    max-width: 500px;
+    width: 100%;
+    opacity: 0;
+    z-index: 99;
+    pointer-events: none;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%) scale(1.2);
+    transition: top 0s 0.2s ease-in-out,
+        opacity 0.2s 0s ease-in-out,
+        transform 0.2s 0s ease-in-out;
+}
+
+.popup.show {
+    top: 50%;
+    opacity: 1;
+    z-index: 99;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+    transition: top 0s 0s ease-in-out,
+        opacity 0.2s 0s ease-in-out,
+        transform 0.2s 0s ease-in-out;
+
+}
+
+.popup :is(header, .icons, .field) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.popup header {
+    // padding-bottom: 15px;
+    // border-bottom: 1px solid #ebedf9;
+}
+
+header span {
+    font-size: 21px;
+    font-weight: 600;
+}
+
+header .close,
+.icons a {
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+}
+
+header .close {
+    color: #878787;
+    font-size: 17px;
+    background: #f2f3fb;
+    height: 33px;
+    width: 33px;
+    cursor: pointer;
+    position: absolute;
+    top: -1em;
+    right: -1em;
+}
+
+header .close:hover {
+    background: #ebedf9;
+}
+
+.popup .content {
+    // margin: 20px 0;
+}
+
+.popup .icons {
+    margin: 15px 0 20px 0;
+}
+
+.content p {
+    font-size: 16px;
+    margin-bottom: 0em;
+}
+
+.content .icons a {
+    height: 50px;
+    width: 50px;
+    font-size: 20px;
+    text-decoration: none;
+    border: 1px solid transparent;
+}
+.content .field {
+
+}
+.copied {
+    background-color: #343334;
+    color: white;
+    font-weight: 600;
+    font-size: 1.5em;
+    padding: .5em 1em;
+    border-radius: 15px;
 }
 
 
