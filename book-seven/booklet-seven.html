@@ -62,8 +62,18 @@ permalink: scripts
 
 
     <script type="text/javascript">
+        // --------------------VARIABLES--------------------------
+
         // Change this according to what book it is
         var bookName = 'book-seven';
+
+        // File type change this depending on what it is
+        var fileType = '.png'
+
+        // How many pages are there, change to the correct amount
+        var totalPages = 9
+
+        // ---------------------------------------------------------
 
         // Mobile Pages cause booklet doesnt work with mobile
         const imageContainerMobile = document.getElementById("imageContainer");
@@ -72,7 +82,7 @@ permalink: scripts
 
         for (let i = 1; i <= totalImagesMobile; i++) {
             const imageMobile = document.createElement("img");
-            imageMobile.src = "book-seven/pages/" + i + ".png";
+            imageMobile.src = bookName + "/pages/" + i + fileType;
             imageContainerMobile.appendChild(imageMobile);
         }
 
@@ -113,7 +123,7 @@ permalink: scripts
 
             // Load the page
 
-            img.attr('src', bookName + '/pages/' + page + '.png');
+            img.attr('src', bookName + '/pages/' + page + fileType);
         }
 
         // Load large page
@@ -133,7 +143,7 @@ permalink: scripts
 
             // Loadnew page
 
-            img.attr('src', bookName + '/pages/' + page + '.png');
+            img.attr('src', bookName + '/pages/' + page + fileType);
         }
 
         // Load small page
@@ -147,7 +157,7 @@ permalink: scripts
             img.unbind('load');
             // Loadnew page
 
-            img.attr('src', bookName + '/pages/' + page + '.png');
+            img.attr('src', bookName + '/pages/' + page + fileType);
         }
 
 
@@ -200,7 +210,7 @@ permalink: scripts
 
                 // The number of pages
 
-                pages: 9,
+                pages: totalPages,
 
                 // Events
 
