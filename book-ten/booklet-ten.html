@@ -97,6 +97,19 @@ permalink: buyers-booklet
             console.log(window.location.href)
         });
 
+        // If there is only one page there is no need for the gradient on the left so we remove that
+        // Start Gradient Delete if one page
+        function hideGradientDiv() {
+            var gradientDiv = document.querySelector(".gradient");
+            if (totalPages === 1) {
+                gradientDiv.style.display = "none";
+            } else {
+                gradientDiv.style.display = "block";
+            }
+        }
+        window.onload = hideGradientDiv;
+        // End Gradient Delete
+
         function loadPage(page, pageElement) {
 
             // Create an image element

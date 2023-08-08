@@ -68,10 +68,10 @@ permalink: landlord_letter
         var bookName = 'book-eleven';
 
         // File type change this depending on what it is
-        var fileType = '.png'
+        var fileType = '.png';
 
         // How many pages are there, change to the correct amount
-        var totalPages = 1
+        var totalPages = 1;
 
         // ---------------------------------------------------------
 
@@ -96,6 +96,19 @@ permalink: landlord_letter
             document.getElementById('url-copy').innerHTML = window.location.href;
             console.log(window.location.href)
         });
+
+        // If there is only one page there is no need for the gradient on the left so we remove that
+        // Start Gradient Delete if one page
+        function hideGradientDiv() {
+            var gradientDiv = document.querySelector(".gradient");
+            if (totalPages === 1) {
+                gradientDiv.style.display = "none";
+            } else {
+                gradientDiv.style.display = "block";
+            }
+        }
+        window.onload = hideGradientDiv;
+        // End Gradient Delete
 
         function loadPage(page, pageElement) {
 
