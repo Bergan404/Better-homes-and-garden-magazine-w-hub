@@ -32,7 +32,7 @@ permalink: vendor-list
         <!-- <a href="/">
             <i class="fa-solid fa-house"></i>
         </a> -->
-        <a target="_blank" href="book-eight/uploads/VENDOR LIST.pdf">
+        <a target="_blank" href="book-eight/uploads/vendor_list.pdf">
             <i class="fa-solid fa-print"></i>
         </a>
         <button id="copyButton" class="view-modal">
@@ -71,7 +71,7 @@ permalink: vendor-list
         var fileType = '.png'
 
         // How many pages are there, change to the correct amount
-        var totalPages = 1
+        var totalPages = 2
 
         // ---------------------------------------------------------
 
@@ -100,9 +100,12 @@ permalink: vendor-list
         // If there is only one page there is no need for the gradient on the left so we remove that
         // Start Gradient Delete if one page
         function hideGradientDiv() {
-            var gradientDiv = document.querySelector(".gradient");
-            if (totalPages === 1) {
-                gradientDiv.style.display = "none";
+            var gradientDiv = document.querySelectorAll(".gradient");
+            if (totalPages === 1 || totalPages === 2) {
+                // gradientDiv.style.display = "none";
+                gradientDiv.forEach(element => {
+                    element.style.display = "none";
+                });
             } else {
                 gradientDiv.style.display = "block";
             }
