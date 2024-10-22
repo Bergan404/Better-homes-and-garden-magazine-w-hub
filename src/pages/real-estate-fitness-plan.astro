@@ -9,7 +9,7 @@ import BookPages from '../components/BookPages.astro';
 
 <Layout title="Real Estate Fitness Plan">
 
-    <section style="background-image: url(src/assets/images/green_double.png);background-position: left;">
+    <section style="background-image: url(/assets/images/green_double.png);background-position: left;">
 
         <BookPages
             download={Download}
@@ -36,7 +36,7 @@ import BookPages from '../components/BookPages.astro';
     
             for (let i = 1; i <= totalImagesMobile; i++) {
                 const imageMobile = document.createElement("img");
-                imageMobile.src = "src/books/" + bookName + "/pages/" + i + fileType;
+                imageMobile.src = "/books/" + bookName + "/pages/" + i + fileType;
                 imageContainerMobile.appendChild(imageMobile);
             }
     
@@ -90,7 +90,7 @@ import BookPages from '../components/BookPages.astro';
     
                 // Load the page
     
-                img.attr('src', "src/books/" + bookName + '/pages/' + page + fileType);
+                img.attr('src', "/books/" + bookName + '/pages/' + page + fileType);
             }
     
             // Load large page
@@ -110,7 +110,7 @@ import BookPages from '../components/BookPages.astro';
     
                 // Loadnew page
     
-                img.attr('src', "src/books/" + bookName + '/pages/' + page + fileType);
+                img.attr('src', "/books/" + bookName + '/pages/' + page + fileType);
             }
     
             // Load small page
@@ -124,7 +124,7 @@ import BookPages from '../components/BookPages.astro';
                 img.unbind('load');
                 // Loadnew page
     
-                img.attr('src', "src/books/" + bookName + '/pages/' + page + fileType);
+                img.attr('src', "/books/" + bookName + '/pages/' + page + fileType);
             }
     
     
@@ -517,9 +517,9 @@ import BookPages from '../components/BookPages.astro';
     
             yepnope({
                 test: Modernizr.csstransforms,
-                yep: ['src/assets/lib/turn.js'],
-                nope: ['src/assets/lib/turn.html4.min.js'],
-                both: ['src/assets/lib/zoom.min.js', 'src/assets/scripts/magazine.js'],
+                yep: ['../assets/lib/turn.js'],
+                nope: ['../assets/lib/turn.html4.min.js'],
+                both: ['../assets/lib/zoom.min.js', '../assets/scripts/magazine.js'],
                 complete: loadApp
             });
     
