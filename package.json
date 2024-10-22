@@ -1,0 +1,17 @@
+{
+  "name": "better_homes_and_gardens_magazine",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.16.7",
+    "astro-bootstrap": "^0.7.0",
+    "sass": "^1.80.3"
+  }
+}

@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import { Image } from 'astro:assets';
+import EachBook from '../components/EachBook.astro';
+
+import Logo from "../assets/images/logo.png";
+import BookOne from "../books/1/pages/1.jpg";
+import BookTwo from "../books/2/pages/1.png";
+import BookThree from "../books/3/pages/1.png";
+import BookFour from "../books/4/pages/1.png";
+import BookFive from "../books/5/pages/1.png";
+import BookSix from "../books/6/pages/1.jpg";
+import BookSeven from "../books/7/pages/1.png";
+import BookEight from "../books/8/pages/1.png";
+import BookNine from "../books/9/pages/1.png";
+import BookTen from "../books/10/pages/1.png";
+import BookEleven from "../books/11/pages/1.png";
+import BookTwelve from "../books/12/pages/1.png";
+---
+
+<Layout title="Better Homes and Gardens Cloud">
+	<div class="loader">
+		<Image src={Logo} alt="BHGRE Loader" />
+	  </div>
+	  
+	  <header class="container-fluid p-0 " role="banner">
+		<div class="container py-2">
+		  <div class="row justify-content-center align-items-center">
+			<div class="col-auto">
+			  <a href="/">
+				<Image src={Logo} alt="BHGRE Logo" style="width:300px;height:auto;" />
+			  </a>
+			</div>
+		  </div>
+		</div>
+	  </header>
+	  
+	  <!-- Hero -->
+	  <div class="container py-5">
+		<div class="row justify-content-around">
+	  
+			<!-- Book Ten -->
+			<EachBook
+				imagePath={BookTen}
+				title="Buyers Booklet"
+				link="/buyers-booklet"
+			/>
+	  
+		  <!-- Book One -->
+		  	<EachBook
+				imagePath={BookOne}
+				title="Listing Presentation"
+				link="/listing-presentation"
+			/>
+	  
+		  <!-- Book Two -->
+		  <EachBook
+				imagePath={BookTwo}
+				title="Distinctive Booklet"
+				link="/distinctive-booklet"
+			/>
+	  
+		  <!-- Book Three -->
+		  <EachBook
+				imagePath={BookThree}
+				title="W Relocation Booklet"
+				link="/w-relocation-booklet"
+			/>
+	  
+		  <!-- Book Five -->
+		  <EachBook
+				imagePath={BookFive}
+				title=`Real Estate Cash Program`
+				link="/real-estate-cash-program"
+			/>
+	  
+		  <!-- Book Eight -->
+		  <EachBook
+				imagePath={BookEight}
+				title="Vendor List"
+				link="/vendor-list"
+			/>
+	  
+		  <!-- Book Four -->
+		  <EachBook
+				imagePath={BookFour}
+				title="Real Estate Fitness Plan"
+				link="/real-estate-fitness-plan"
+			/>
+	  
+		   <!-- Book Seven -->
+		   <EachBook
+				imagePath={BookSeven}
+				title="Scripts"
+				link="/scripts"
+			/>
+	  
+		  <!-- Book Nine -->
+		  <EachBook
+				imagePath={BookNine}
+				title="180 Ways To Earn Commission"
+				link="/180-ways-to-earn-commission"
+			/>
+	  
+		   <!-- Book Six -->
+		   <EachBook
+				imagePath={BookSix}
+				title="BHGRE vs Everyone"
+				link="/agent-market-chart-social"
+			/>
+	  
+		   <!-- Book Eleven -->
+		   <EachBook
+				imagePath={BookEleven}
+				title="Landlord Letter"
+				link="/landlord_letter"
+			/>
+	  
+		  <!-- Book Twelve -->
+		  <EachBook
+				imagePath={BookTwelve}
+				title="Tenant Letter"
+				link="/tenant_letter"
+			/>
+	  
+		</div>
+	  </div>
+	  
+	  <div class="layout">
+		<div class="box">BHGRE<br />COPYRIGHT<br />All Rights Reserved</div>
+	</div>
+</Layout>
+
+<style>
+	
+</style>
