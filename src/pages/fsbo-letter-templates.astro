@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Booklet.astro';
+
+// FOR WORD DOC FORMAT
+const Download1 = "/books/13/uploads/Benefits of Working with an Agent.docx";
+const Download2 = "/books/13/uploads/Common FSBO Pitfalls to Avoid.docx";
+const Download3 = "/books/13/uploads/FSBO vs. Realtor- What do the Numbers Say.docx";
+const Download4 = "/books/13/uploads/Hear From Other Sellers Like You.docx";
+const Download5 = "/books/13/uploads/Helping You Sell Faster and for More Money.docx";
+const Download6 = "/books/13/uploads/How to Get More Eyes on Your Listing.docx";
+const Download7 = "/books/13/uploads/How to Get the Most Out of Your Home Sale.docx";
+const Download8 = "/books/13/uploads/Last Chance to Maximize Your Sale.docx";
+const Download9 = "/books/13/uploads/Navigating the Real Estate Market.docx";
+const Download10 = "/books/13/uploads/Pricing Your Home Right- The Key to a Fast Sale.docx";
+const Download11 = "/books/13/uploads/Frequency Schedule.png";
+const Download12 = "/books/13/uploads/OBJECTION HANDLERS FOR FSBO.docx";
+
+
+import Page1 from "../books/13/pages/Benefits_of_working_with_an_agent.png";
+import Page2 from "../books/13/pages/Common_fsbo_pitfalls.png";
+import Page3 from "../books/13/pages/FSBO_vs_realtor.png";
+import Page4 from "../books/13/pages/Hear_from_other_sellers.png";
+import Page5 from "../books/13/pages/Helping_you_sell.png";
+import Page6 from "../books/13/pages/How_to_get_more_eyes.png";
+import Page7 from "../books/13/pages/How_to_get_the_most.png";
+import Page8 from "../books/13/pages/Last_chance_to_maximize_your_sale.png";
+import Page9 from "../books/13/pages/Navigating_the_real_estate_market.png";
+import Page10 from "../books/13/pages/Pricing_your_home.png";
+import Page11 from "../books/13/pages/Frequency Schedule.png";
+import Page12 from "../books/13/pages/Objection_handler_fsbo.png";
+
+import EachFile from '../components/EachFile.astro';
+
+---
+
+<Layout title="FSBO Letter Templates">
+
+    <section style="background-image: url(/assets/images/green_double.png);background-position: left;">
+        <div class="container py-5">
+            <div class="row justify-content-around">
+                <EachFile
+                    imagePath={Page11}
+                    title="Benefits of working with and agent"
+                    link={Download11}
+                />
+
+                <EachFile
+                    imagePath={Page12}
+                    title="Benefits of working with and agent"
+                    link={Download12}
+                />
+
+                <EachFile
+                    imagePath={Page1}
+                    title="Benefits of working with and agent"
+                    link={Download1}
+                />
+
+                <EachFile
+                    imagePath={Page2}
+                    title="Common FSBO pitfalls to avoid"
+                    link={Download2}
+                />
+
+                <EachFile
+                    imagePath={Page3}
+                    title="fsbo vs. realtor"
+                    link={Download3}
+                />
+
+                <EachFile
+                    imagePath={Page4}
+                    title="Benefit"
+                    link={Download4}
+                />
+
+                <EachFile
+                    imagePath={Page5}
+                    title="Benefits of working with and agent"
+                    link={Download5}
+                />
+
+                <EachFile
+                    imagePath={Page6}
+                    title="Benefits of working with and agent"
+                    link={Download6}
+                />
+
+                <EachFile
+                    imagePath={Page7}
+                    title="Benefits of working with and agent"
+                    link={Download7}
+                />
+
+                <EachFile
+                    imagePath={Page8}
+                    title="Benefits of working with and agent"
+                    link={Download8}
+                />
+
+                <EachFile
+                    imagePath={Page9}
+                    title="Benefits of working with and agent"
+                    link={Download9}
+                />
+
+                <EachFile
+                    imagePath={Page10}
+                    title="Benefits of working with and agent"
+                    link={Download10}
+                />
+
+            </div>
+        </div>
+    </section>
+	
+</Layout>
+
+<style>
+	
+</style>
