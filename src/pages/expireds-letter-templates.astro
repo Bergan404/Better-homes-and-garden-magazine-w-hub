@@ -1,20 +1,29 @@
 ---
-import Layout from '../layouts/Booklet.astro';
+import Layout from "../layouts/Booklet.astro";
 
 // FOR WORD DOC FORMAT
 const Download1 = "/books/14/uploads/Frequency Schedule.png";
-const Download2 = "/books/14/uploads/Don’t Give Up on Selling Your Home—Let’s Make It Happen Together.docx";
-const Download3 = "/books/14/uploads/Expired Listing_ Let’s Get Your Home Back on the Market.docx";
-const Download4 = "/books/14/uploads/Is Your Home Still Available_ Let’s Relist with a New Approach.docx";
-const Download5 = "/books/14/uploads/Let’s Turn Your Expired Listing Into a Success.docx";
+const Download2 =
+  "/books/14/uploads/Don’t Give Up on Selling Your Home—Let’s Make It Happen Together.docx";
+const Download3 =
+  "/books/14/uploads/Expired Listing_ Let’s Get Your Home Back on the Market.docx";
+const Download4 =
+  "/books/14/uploads/Is Your Home Still Available_ Let’s Relist with a New Approach.docx";
+const Download5 =
+  "/books/14/uploads/Let’s Turn Your Expired Listing Into a Success.docx";
 const Download6 = "/books/14/uploads/objection handlers for expireds.docx";
-const Download7 = "/books/14/uploads/Ready to Relist_ Let’s Get Your Home Sold! .docx";
-const Download8 = "/books/14/uploads/Relisting with Me Means Results—Let’s Get Started.docx";
-const Download9 = "/books/14/uploads/This Could Be Your Last Chance—Let’s Get Your Home Sold!.docx";
-const Download10 = "/books/14/uploads/Time is Money—Relist Your Home Before the Market Shifts!.docx";
-const Download11 = "/books/14/uploads/Your Home Deserves Another Chance—This Time with the Right Approach.docx";
-const Download12 = "/books/14/uploads/Your Home Didn’t Sell_ Let’s Make it Happen this Time.docx";
-
+const Download7 =
+  "/books/14/uploads/Ready to Relist_ Let’s Get Your Home Sold! .docx";
+const Download8 =
+  "/books/14/uploads/Relisting with Me Means Results—Let’s Get Started.docx";
+const Download9 =
+  "/books/14/uploads/This Could Be Your Last Chance—Let’s Get Your Home Sold!.docx";
+const Download10 =
+  "/books/14/uploads/Time is Money—Relist Your Home Before the Market Shifts!.docx";
+const Download11 =
+  "/books/14/uploads/Your Home Deserves Another Chance—This Time with the Right Approach.docx";
+const Download12 =
+  "/books/14/uploads/Your Home Didn’t Sell_ Let’s Make it Happen this Time.docx";
 
 import Page1 from "../books/14/pages/Frequency Schedule.png";
 import Page2 from "../books/14/pages/dont_give_up.png";
@@ -29,95 +38,157 @@ import Page10 from "../books/14/pages/Time_is_money.png";
 import Page11 from "../books/14/pages/Your_home_deserves.png";
 import Page12 from "../books/14/pages/your_home_didnt_sell.png";
 
-import EachFile from '../components/EachFile.astro';
-
+import EachFile from "../components/EachFile.astro";
 ---
 
 <Layout title="Expireds Letter Template">
+  <section
+    style="background-image: url(/assets/images/green_double.png);background-position: left;"
+  >
+    <div class="container py-5">
+      <div class="share-print">
+        <button id="download-all">
+          <i class="fa-solid fa-download"></i>
+        </button>
+      </div>
+      <div class="row justify-content-around">
+        <EachFile
+          imagePath={Page1}
+          title="Benefits of working with and agent"
+          link={Download1}
+        />
 
-    <section style="background-image: url(/assets/images/green_double.png);background-position: left;">
-        <div class="container py-5">
-            <div class="row justify-content-around">
-                <EachFile
-                    imagePath={Page1}
-                    title="Benefits of working with and agent"
-                    link={Download1}
-                />
-                
-                <EachFile
-                    imagePath={Page6}
-                    title="Benefits of working with and agent"
-                    link={Download6}
-                />
+        <EachFile
+          imagePath={Page6}
+          title="Benefits of working with and agent"
+          link={Download6}
+        />
 
-                <EachFile
-                    imagePath={Page11}
-                    title="Benefits of working with and agent"
-                    link={Download11}
-                />
+        <EachFile
+          imagePath={Page11}
+          title="Benefits of working with and agent"
+          link={Download11}
+        />
 
-                <EachFile
-                    imagePath={Page12}
-                    title="Benefits of working with and agent"
-                    link={Download12}
-                />
+        <EachFile
+          imagePath={Page12}
+          title="Benefits of working with and agent"
+          link={Download12}
+        />
 
+        <EachFile
+          imagePath={Page2}
+          title="Common FSBO pitfalls to avoid"
+          link={Download2}
+        />
 
-                <EachFile
-                    imagePath={Page2}
-                    title="Common FSBO pitfalls to avoid"
-                    link={Download2}
-                />
+        <EachFile imagePath={Page3} title="fsbo vs. realtor" link={Download3} />
 
-                <EachFile
-                    imagePath={Page3}
-                    title="fsbo vs. realtor"
-                    link={Download3}
-                />
+        <EachFile imagePath={Page4} title="Benefit" link={Download4} />
 
-                <EachFile
-                    imagePath={Page4}
-                    title="Benefit"
-                    link={Download4}
-                />
+        <EachFile
+          imagePath={Page5}
+          title="Benefits of working with and agent"
+          link={Download5}
+        />
 
-                <EachFile
-                    imagePath={Page5}
-                    title="Benefits of working with and agent"
-                    link={Download5}
-                />
+        <EachFile
+          imagePath={Page7}
+          title="Benefits of working with and agent"
+          link={Download7}
+        />
 
+        <EachFile
+          imagePath={Page8}
+          title="Benefits of working with and agent"
+          link={Download8}
+        />
 
-                <EachFile
-                    imagePath={Page7}
-                    title="Benefits of working with and agent"
-                    link={Download7}
-                />
+        <EachFile
+          imagePath={Page9}
+          title="Benefits of working with and agent"
+          link={Download9}
+        />
 
-                <EachFile
-                    imagePath={Page8}
-                    title="Benefits of working with and agent"
-                    link={Download8}
-                />
-
-                <EachFile
-                    imagePath={Page9}
-                    title="Benefits of working with and agent"
-                    link={Download9}
-                />
-
-                <EachFile
-                    imagePath={Page10}
-                    title="Benefits of working with and agent"
-                    link={Download10}
-                />
-
-            </div>
-        </div>
-    </section>
-	
+        <EachFile
+          imagePath={Page10}
+          title="Benefits of working with and agent"
+          link={Download10}
+        />
+      </div>
+    </div>
+  </section>
 </Layout>
 
-<style>
-	
-</style>
+<script>
+  const files = [
+    {
+      name: "Frequency Schedule.png",
+      url: "/books/14/uploads/Frequency Schedule.png",
+    },
+    {
+      name: "Don’t Give Up on Selling Your Home—Let’s Make It Happen Together.docx",
+      url: "/books/14/uploads/Don’t Give Up on Selling Your Home—Let’s Make It Happen Together.docx",
+    },
+    {
+      name: "Expired Listing_ Let’s Get Your Home Back on the Market.docx",
+      url: "/books/14/uploads/Expired Listing_ Let’s Get Your Home Back on the Market.docx",
+    },
+    {
+      name: "Is Your Home Still Available_ Let’s Relist with a New Approach.docx",
+      url: "/books/14/uploads/Is Your Home Still Available_ Let’s Relist with a New Approach.docx",
+    },
+    {
+      name: "Let’s Turn Your Expired Listing Into a Success.docx",
+      url: "/books/14/uploads/Let’s Turn Your Expired Listing Into a Success.docx",
+    },
+    {
+      name: "objection handlers for expireds.docx",
+      url: "/books/14/uploads/objection handlers for expireds.docx",
+    },
+    {
+      name: "Ready to Relist_ Let’s Get Your Home Sold! .docx",
+      url: "/books/14/uploads/Ready to Relist_ Let’s Get Your Home Sold! .docx",
+    },
+    {
+      name: "Relisting with Me Means Results—Let’s Get Started.docx",
+      url: "/books/14/uploads/Relisting with Me Means Results—Let’s Get Started.docx",
+    },
+    {
+      name: "This Could Be Your Last Chance—Let’s Get Your Home Sold!.docx",
+      url: "/books/14/uploads/This Could Be Your Last Chance—Let’s Get Your Home Sold!.docx",
+    },
+    {
+      name: "Time is Money—Relist Your Home Before the Market Shifts!.docx",
+      url: "/books/14/uploads/Time is Money—Relist Your Home Before the Market Shifts!.docx",
+    },
+    {
+      name: "Your Home Deserves Another Chance—This Time with the Right Approach.docx",
+      url: "/books/14/uploads/Your Home Deserves Another Chance—This Time with the Right Approach.docx",
+    },
+    {
+      name: "Your Home Didn’t Sell_ Let’s Make it Happen this Time.docx",
+      url: "/books/14/uploads/Your Home Didn’t Sell_ Let’s Make it Happen this Time.docx",
+    },
+  ];
+
+  document
+    .getElementById("download-all")
+    .addEventListener("click", async () => {
+      const zip = new JSZip();
+
+      for (const file of files) {
+        const response = await fetch(file.url);
+        const blob = await response.blob();
+        zip.file(file.name, blob);
+      }
+
+      const zipBlob = await zip.generateAsync({ type: "blob" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(zipBlob);
+      link.download = "EXPIRED-letter-templates.zip";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+</script>

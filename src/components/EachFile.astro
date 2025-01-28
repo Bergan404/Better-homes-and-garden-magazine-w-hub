@@ -3,51 +3,54 @@ import type { ImageMetadata } from "astro";
 import { getImage } from "astro:assets";
 
 interface Props {
-    imagePath: string | ImageMetadata;
-    title: string;
-    link: string;
+  imagePath: string | ImageMetadata;
+  title: string;
+  link: string;
 }
 
 const { imagePath, title, link } = Astro.props;
 
 const imagePathAwaiting = await getImage({
-    src: imagePath,
-    format: "png",
+  src: imagePath,
+  format: "png",
 });
 ---
 
-<div class="col-3 each-file py-3">
-    <a href="#" onclick={`openModal(event, '${imagePathAwaiting.src}', '${title}', '${link}')`}>
-        <div class="background-image">
-            <div class="overlay"></div>
-            <img class="more-round" src={imagePath.src} alt={title} />
-        </div>
-    </a>
+<div class="col-10 col-md-5 col-lg-3 each-file py-3">
+  <a
+    href="#"
+    onclick={`openModal(event, '${imagePathAwaiting.src}', '${title}', '${link}')`}
+  >
+    <div class="background-image">
+      <div class="overlay"></div>
+      <img class="more-round" src={imagePath.src} alt={title} />
+    </div>
+  </a>
 </div>
 
 <div id="modal" class="modal hidden">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img id="modal-image" class="modal-image" src={imagePath.src} alt={title}/>
-        <a id="download-link" class="download-button" href="#" download>Download</a>
-    </div>
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modal-image" class="modal-image" src={imagePath.src} alt={title} />
+    <a id="download-link" class="download-button" href="#" download>Download</a>
+  </div>
 </div>
 
 <script>
-    window.openModal = function(event, imageSrc, title, link) {
-        event.preventDefault();
-        document.getElementById('modal-image').src = imageSrc;
-        document.getElementById('download-link').href = link;
-        document.getElementById('modal').classList.remove('hidden');
-    }
+  window.openModal = function (event, imageSrc, title, link) {
+    event.preventDefault();
+    document.getElementById("modal-image").src = imageSrc;
+    document.getElementById("download-link").href = link;
+    document.getElementById("modal").classList.remove("hidden");
+  };
 
-    window.closeModal = function() {
-        document.getElementById('modal').classList.add('hidden');
-    }
+  window.closeModal = function () {
+    document.getElementById("modal").classList.add("hidden");
+  };
 </script>
 
 <style>
-.modal {
+  .modal {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,33 +61,33 @@ const imagePathAwaiting = await getImage({
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
     z-index: 1000;
-}
+  }
 
-.modal-content {
+  .modal-content {
     position: relative;
     background: white;
     padding: 20px;
     border-radius: 5px;
     width: 500px;
-}
+  }
 
-.hidden {
+  .hidden {
     display: none;
-}
+  }
 
-.close {
+  .close {
     position: absolute;
     top: 10px;
     right: 20px;
     cursor: pointer;
-}
+  }
 
-.modal-image {
+  .modal-image {
     max-width: 100%;
     max-height: 80vh;
-}
+  }
 
-.download-button {
+  .download-button {
     display: block;
     margin-top: 20px;
     text-align: center;
@@ -93,5 +96,5 @@ const imagePathAwaiting = await getImage({
     color: white;
     text-decoration: none;
     border-radius: 5px;
-}
+  }
 </style>
