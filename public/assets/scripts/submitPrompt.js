@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 output.textContent = 'An error occurred.';
                 console.error(err);
             } finally {
-                submitButton.disabled = false; // re-enable
+                submitButton.disabled = false;
             }
         });
     });
