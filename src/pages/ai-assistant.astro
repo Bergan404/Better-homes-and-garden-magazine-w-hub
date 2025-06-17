@@ -1,0 +1,34 @@
+---
+import AIPromptCard from '../components/AIPromptCard.astro';
+---
+
+<html lang="en">
+  <head>
+    <title>AI Tools - BHGRE Cloud</title>
+    <script type="module" src="/assets/scripts/submitPrompt.js" defer></script>
+  </head>
+  <body class="bg-gray-50 font-sans">
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <nav class="w-64 bg-white shadow-lg hidden md:block">
+        <div class="p-6 text-xl font-bold text-green-700">BHGRE AI Tools</div>
+        <ul class="px-6 space-y-4 text-sm">
+          <li><a href="#listing" class="hover:text-green-600">Listing Generator</a></li>
+          <li><a href="#instagram" class="hover:text-green-600">Instagram Captions</a></li>
+          <li><a href="#followup" class="hover:text-green-600">Lead Follow-Ups</a></li>
+          <li><a href="#objections" class="hover:text-green-600">Objection Handlers</a></li>
+          <li><a href="#coaching" class="hover:text-green-600">Agent Coaching</a></li>
+        </ul>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-6 space-y-12">
+        <AIPromptCard id="listing" title="Listing Description Generator" placeholder="Describe the property..." />
+        <AIPromptCard id="instagram" title="Instagram & Social Captions" placeholder="What's the property or theme?" />
+        <AIPromptCard id="followup" title="Lead Follow-Up Templates" placeholder="Provide lead info/context..." />
+        <AIPromptCard id="objections" title="Objection Handlers" placeholder="What's the client objection?" />
+        <AIPromptCard id="coaching" title="Agent Coaching" placeholder="What do you want advice on?" />
+      </main>
+    </div>
+  </body>
+</html>
