@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const section = form.getAttribute('data-section');
             const textarea = form.querySelector('textarea');
-            const output = form.nextElementSibling;
+            const output = form.parentElement.querySelector(".ai-output");
             const userInput = textarea.value;
 
             output.classList.remove('hidden');
@@ -34,11 +34,39 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 $(document).ready(function () {
-  $(".ai-select-btn").on("click", function () {
-    const target = $(this).data("target");
+    let currentSection = null;
 
-    $("section[id]").addClass("d-none");
+    $(".ai-select-btn").on("click", function () {
+        const target = $(this).data("target");
+        currentSection = target;
 
-    $(target).removeClass("d-none");
-  });
+        $("section[id]").addClass("d-none");
+        $(target).removeClass("d-none");
+    });
+
+    $("#copyOutput").on("click", function () {
+        const outputText = $(currentSection).find(".ai-output").text().trim();
+
+        if (!outputText) {
+            navigator.clipboard.writeText(outputText).then(() => {
+                const copiedMsg = $(this).closest("section").find(".copied");
+                copiedMsg.css("visibility", "visible");
+
+                setTimeout(() => {
+                    copiedMsg.css("visibility", "hidden");
+                }, 2000);
+            });
+        }
+
+        if (outputText) {
+            navigator.clipboard.writeText(outputText).then(() => {
+                const copiedMsg = $(this).closest("section").find(".copied");
+                copiedMsg.css("visibility", "visible");
+
+                setTimeout(() => {
+                    copiedMsg.css("visibility", "hidden");
+                }, 2000);
+            });
+        }
+    });
 });

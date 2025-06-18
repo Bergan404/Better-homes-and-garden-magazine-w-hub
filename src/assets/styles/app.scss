@@ -37,3 +37,39 @@ $youtube: #d34836 !default;
 $snapchat: #fffc00 !default;
 $pinterest: #cb2027 !default;
 $google: #dd4b39 !default;
+
+/* MIN-WIDTH */
+
+@mixin xl-screen {
+    @media (min-width: 1280px) { @content; }
+}
+
+@mixin lg-screen {
+    @media (min-width: 992px) { @content; }
+}
+
+@mixin md-screen {
+    @media (min-width: 768px) { @content; }
+}
+
+@mixin sm-screen{
+    @media (min-width: 576px) { @content; }
+}
+
+/* MAX-WIDTH */
+
+@mixin lg-desktop {
+    @media (max-width: 1280px) { @content; }
+}
+
+@mixin md-desktop {
+    @media (max-width: 992px) { @content; }
+}
+
+@mixin sm-desktop {
+    @media (max-width: 768px) { @content; }
+}
+
+@mixin mobile {
+    @media (max-width: 576px) { @content; }
+}
