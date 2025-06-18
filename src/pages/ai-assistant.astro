@@ -22,44 +22,46 @@ import Logo from "../assets/images/logo.png";
                             style="width:300px;height:auto;"
                         />
                     </a>
-                    <h3 class="fw-bold">AI ASSISTANT</h3>
-                    <p>
-                        Select one of the tools below to generate custom content
-                        for your real estate needs in seconds.
-                    </p>
                 </div>
             </div>
         </div>
     </header>
 
     <div class="container py-5 flex min-h-screen">
-        <div class="w-64 md:block text-white ai-options">
-            <ul class="px-6 space-y-4 list-unstyled d-flex text-center">
-                <li class="col">
+        <div class="text-center text-white ai-page-header">
+            <h3 class="fw-bold">AI ASSISTANT</h3>
+            <p>
+                Select one of the tools below to generate custom content
+                for your real estate needs in seconds.
+            </p>
+        </div>
+        <div class="text-white ai-options">
+            <ul class="px-6 list-unstyled d-flex text-center flex-wrap justify-content-center gap-2">
+                <li class="col-3 col-md">
                     <button
                         class="ai-select-btn text-decoration-none"
                         data-target="#listing">Listing Generator</button
                     >
                 </li>
-                <li class="col">
+                <li class="col-3 col-md">
                     <button
                         class="ai-select-btn text-decoration-none"
                         data-target="#instagram">Instagram Captions</button
                     >
                 </li>
-                <li class="col">
+                <li class="col-3 col-md">
                     <button
                         class="ai-select-btn text-decoration-none"
                         data-target="#followup">Lead Follow-Ups</button
                     >
                 </li>
-                <li class="col">
+                <li class="col-3 col-md">
                     <button
                         class="ai-select-btn text-decoration-none"
                         data-target="#objections">Objection Handlers</button
                     >
                 </li>
-                <li class="col">
+                <li class="col-3 col-md">
                     <button
                         class="ai-select-btn text-decoration-none"
                         data-target="#coaching">Agent Coaching</button
@@ -68,7 +70,7 @@ import Logo from "../assets/images/logo.png";
             </ul>
         </div>
 
-        <main class="flex-1 p-6 space-y-12">
+        <main class="my-4">
             <AIPromptCard
                 id="listing"
                 title="Listing Description Generator"
