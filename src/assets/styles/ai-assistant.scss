@@ -5,11 +5,6 @@ textarea {
 }
 
 .ai-page-header {
-    // h3 {
-    //     @include sm-desktop {
-    //         font-size: 20px;
-    //     }
-    // }
     p {
         @include sm-desktop {
             font-size: 13px;
@@ -45,15 +40,19 @@ textarea {
 }
 
 .ai-submit-btn {
+    background-color: white;
+    color: black;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
     font-weight: 600;
-    transition: .2s ease-in-out;
+    transition: 0.3s ease;
 
     &:hover {
         background-color: #006600;
         color: white;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
 }
 
@@ -83,6 +82,7 @@ textarea {
         button {
             background: none;
             border: none;
+            color: black;
         }
     }
 }
