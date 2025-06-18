@@ -32,3 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+$(document).ready(function () {
+  $(".ai-select-btn").on("click", function () {
+    const target = $(this).data("target");
+
+    $("section[id]").addClass("d-none");
+
+    $(target).removeClass("d-none");
+  });
+});

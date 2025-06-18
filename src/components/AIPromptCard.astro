@@ -1,23 +1,26 @@
 ---
-const { id, title, placeholder } = Astro.props;
+const { id, title, description, placeholder } = Astro.props;
 ---
 
-<section id={id} class="bg-white p-6 rounded-xl shadow-md">
-  <h2 class="text-lg font-semibold mb-2 text-gray-700">{title}</h2>
-  <form class="ai-form space-y-2" data-section={id}>
-    <textarea 
-      name="userInput"
-      rows="4"
-      placeholder={placeholder}
-      class="w-full p-2 border border-gray-300 rounded resize-none"
-      required
-    ></textarea>
-    <button
-      type="submit"
-      class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-    >
-      Generate
-    </button>
-  </form>
-  <div class="ai-output mt-4 p-3 bg-gray-100 rounded text-sm text-gray-800 hidden"></div>
+<section id={id} class="p-6 rounded-xl shadow-m col-12 col-lg-8 m-auto d-none">
+  <h2 class="mb-2 text-white text-center">{title}</h2>
+  <p class="mb-2 text-white text-center">{description}</p>
+  <div class="d-flex">
+      <form class="ai-form d-flex flex-column col" data-section={id}>
+        <textarea 
+          name="userInput"
+          rows="10"
+          placeholder={placeholder}
+          class="p-2 border rounded"
+          required
+        ></textarea>
+        <button
+          type="submit"
+          class="px-4 py-2 rounded my-2 ai-submit-btn"
+        >
+          Generate
+        </button>
+      </form>
+      <div class="ai-output px-3 text-white hidden col"></div>
+  </div>
 </section>

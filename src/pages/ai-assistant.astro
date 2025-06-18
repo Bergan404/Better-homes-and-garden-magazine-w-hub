@@ -1,35 +1,108 @@
 ---
-import AIPromptCard from '../components/AIPromptCard.astro';
-import Layout from '../layouts/Layout.astro';
+import AIPromptCard from "../components/AIPromptCard.astro";
+import Layout from "../layouts/Layout.astro";
+
+import { Image } from "astro:assets";
+import Logo from "../assets/images/logo.png";
 ---
 
-<html lang="en">
-  <head>
-    <title>AI Tools - BHGRE Cloud</title>
-    <script type="module" src="/assets/scripts/submitPrompt.js" defer></script>
-  </head>
-  <body class="bg-gray-50 font-sans">
-    <div class="flex min-h-screen">
-      <!-- Sidebar -->
-      <nav class="w-64 bg-white shadow-lg hidden md:block">
-        <div class="p-6 text-xl font-bold text-green-700">BHGRE AI Tools</div>
-        <ul class="px-6 space-y-4 text-sm">
-          <li><a href="#listing" class="hover:text-green-600">Listing Generator</a></li>
-          <li><a href="#instagram" class="hover:text-green-600">Instagram Captions</a></li>
-          <li><a href="#followup" class="hover:text-green-600">Lead Follow-Ups</a></li>
-          <li><a href="#objections" class="hover:text-green-600">Objection Handlers</a></li>
-          <li><a href="#coaching" class="hover:text-green-600">Agent Coaching</a></li>
-        </ul>
-      </nav>
-
-      <!-- Main Content -->
-      <main class="flex-1 p-6 space-y-12">
-        <AIPromptCard id="listing" title="Listing Description Generator" placeholder="Describe the property..." />
-        <AIPromptCard id="instagram" title="Instagram & Social Captions" placeholder="What's the property or theme?" />
-        <AIPromptCard id="followup" title="Lead Follow-Up Templates" placeholder="Provide lead info/context..." />
-        <AIPromptCard id="objections" title="Objection Handlers" placeholder="What's the client objection?" />
-        <AIPromptCard id="coaching" title="Agent Coaching" placeholder="What do you want advice on?" />
-      </main>
+<Layout title="Better Homes and Gardens Cloud">
+    <div class="loader">
+        <Image src={Logo} alt="BHGRE Loader" />
     </div>
-  </body>
-</html>
+
+    <header class="container-fluid p-0" role="banner">
+        <div class="container py-2">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-auto text-center text-white">
+                    <a href="/">
+                        <Image
+                            src={Logo}
+                            alt="BHGRE Logo"
+                            style="width:300px;height:auto;"
+                        />
+                    </a>
+                    <h3 class="fw-bold">AI ASSISTANT</h3>
+                    <p>
+                        Select one of the tools below to generate custom content
+                        for your real estate needs in seconds.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container py-5 flex min-h-screen">
+        <div class="w-64 md:block text-white ai-options">
+            <ul class="px-6 space-y-4 list-unstyled d-flex text-center">
+                <li class="col">
+                    <button
+                        class="ai-select-btn text-decoration-none"
+                        data-target="#listing">Listing Generator</button
+                    >
+                </li>
+                <li class="col">
+                    <button
+                        class="ai-select-btn text-decoration-none"
+                        data-target="#instagram">Instagram Captions</button
+                    >
+                </li>
+                <li class="col">
+                    <button
+                        class="ai-select-btn text-decoration-none"
+                        data-target="#followup">Lead Follow-Ups</button
+                    >
+                </li>
+                <li class="col">
+                    <button
+                        class="ai-select-btn text-decoration-none"
+                        data-target="#objections">Objection Handlers</button
+                    >
+                </li>
+                <li class="col">
+                    <button
+                        class="ai-select-btn text-decoration-none"
+                        data-target="#coaching">Agent Coaching</button
+                    >
+                </li>
+            </ul>
+        </div>
+
+        <main class="flex-1 p-6 space-y-12">
+            <AIPromptCard
+                id="listing"
+                title="Listing Description Generator"
+                description="Craft compelling property descriptions that highlight key features and attract potential buyers with clear, engaging language."
+                placeholder="Describe the property..."
+            />
+            <AIPromptCard
+                id="instagram"
+                title="Instagram & Social Captions"
+                description="Generate attention-grabbing captions tailored for real estate social posts to boost engagement and showcase listings effectively."
+                placeholder="What's the property or theme?"
+            />
+            <AIPromptCard
+                id="followup"
+                title="Lead Follow-Up Templates"
+                description="Create ready-to-send follow-up messages for new leads to stay top of mind and increase your chances of converting interest into action."
+                placeholder="Provide lead info/context..."
+            />
+            <AIPromptCard
+                id="objections"
+                title="Objection Handlers"
+                description="Get smart, persuasive responses to common client objections—perfect for overcoming hesitation and moving deals forward confidently."
+                placeholder="What's the client objection?"
+            />
+            <AIPromptCard
+                id="coaching"
+                title="Agent Coaching"
+                description="Receive personalized scripts and strategies to enhance your communication, boost client trust, and grow as a top-performing agent."
+                placeholder="What do you want advice on?"
+            />
+        </main>
+    </div>
+
+    <div class="layout">
+        <div class="box">BHGRE<br />COPYRIGHT<br />All Rights Reserved</div>
+    </div>
+</Layout>
