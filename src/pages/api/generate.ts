@@ -17,11 +17,15 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const promptMap: Record<string, string> = {
-      listing: 'Generate a compelling real estate listing description based on: ',
-      instagram: 'Write an Instagram caption for this property or theme: ',
-      followup: 'Write a lead follow-up message with this info: ',
-      objections: 'Respond to this client objection: ',
-      coaching: 'Give real estate coaching advice on: ',
+      listing: `You are a real estate copywriter. Write a compelling, emotionally appealing property listing description. Make it persuasive and include highlights that would attract potential buyers. Based on the details below:`,
+
+      instagram: `You're writing a short, punchy Instagram caption for a real estate post. Keep it engaging, friendly, and include relevant emojis if appropriate. Use a hook at the beginning to catch attention. The post is about:`,
+
+      followup: `You are a real estate agent following up with a lead. Write a friendly and professional follow-up message via email or text that encourages them to take the next step. Use the context below:`,
+
+      objections: `You are a real estate agent responding to a client's objection. Write a calm, understanding, and persuasive response that acknowledges the concern while building trust. The objection is:`,
+
+      coaching: `You're a seasoned real estate coach mentoring an agent. Offer practical, motivational advice based on the following challenge or question. Keep it concise and actionable. The topic is:`
     };
 
     const basePrompt = promptMap[promptType];

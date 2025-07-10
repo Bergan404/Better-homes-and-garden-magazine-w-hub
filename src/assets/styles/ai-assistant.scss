@@ -13,7 +13,7 @@ textarea {
 }
 
 .ai-options {
-     @include md-desktop {
+    @include md-desktop {
         font-size: 15px;
     }
 
@@ -22,20 +22,24 @@ textarea {
     }
 }
 
-.ai-select-btn {
-    background-color: white;
-    color: black;
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-weight: 600;
-    border: none;
-    transition: 0.3s ease;
+.ai-select {
 
-    &:hover {
-        background-color: #006600;
+    .ai-select-btn {
+        width: 100%;
+        background-color: #56565652;
+        padding: 16px;
+        border-radius: 8px;
         color: white;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        font-weight: 600;
+        border: none;
+        transition: 0.3s ease;
+
+        &:hover {
+            background-color: #006600;
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
     }
 }
 
@@ -57,17 +61,18 @@ textarea {
 }
 
 .prompt-cards {
-    background-color: #56565652;
+    // background-color: #56565652;
     border-radius: 12px;
     padding: 1.5rem;
     margin-top: 2rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    // box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 
     h2 {
         @include sm-desktop {
             font-size: 20px;
         }
     }
+
     p {
         @include sm-desktop {
             font-size: 13px;
