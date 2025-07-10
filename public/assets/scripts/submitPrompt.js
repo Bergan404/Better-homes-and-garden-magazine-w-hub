@@ -74,28 +74,57 @@ document.addEventListener('DOMContentLoaded', () => {
 let $activeSection = null;
 
 $(document).ready(function () {
-  $(".ai-select-btn").on("click", function () {
-    const targetId = $(this).data("target");
-    const $section = $(targetId);
+    $(".ai-select-btn").on("click", function () {
+        const targetId = $(this).data("target");
+        const $section = $(targetId);
+        currentSection = targetId;
 
-    $activeSection = $section;
-    $("#aiPromptModalBody").empty().append($section);
-    $section.removeClass("d-none");
+        $activeSection = $section;
+        $("#aiPromptModalBody").empty().append($section);
+        $section.removeClass("d-none");
 
-    const titleText = $section.find("h2").text();
-    $("#aiPromptModalLabel").text(titleText);
+        const titleText = $section.find("h2").text();
+        $("#aiPromptModalLabel").text(titleText);
 
-    const modal = new bootstrap.Modal(document.getElementById("aiPromptModal"));
-    modal.show();
-  });
+        const modal = new bootstrap.Modal(document.getElementById("aiPromptModal"));
+        modal.show();
+    });
 
-  $("#aiPromptModal").on("hidden.bs.modal", function () {
-  document.activeElement?.blur();
+    $("#aiPromptModal").on("hidden.bs.modal", function () {
+        document.activeElement?.blur();
 
-  if ($activeSection) {
-    $("main").append($activeSection);
-    $activeSection.addClass("d-none");
-    $activeSection = null;
-  }
-});
+        if ($activeSection) {
+            $("main").append($activeSection);
+            $activeSection.addClass("d-none");
+            $activeSection = null;
+        }
+    });
+
+    let currentSection = null;
+
+     $(".copyOutput").on("click", function () {
+         const outputText = $(currentSection).find(".ai-output").text().trim();
+
+        if (!outputText) {
+            navigator.clipboard.writeText(outputText).then(() => {
+                const copiedMsg = $(this).closest("section").find(".copied");
+                copiedMsg.css("visibility", "visible");
+
+                setTimeout(() => {
+                    copiedMsg.css("visibility", "hidden");
+                }, 2000);
+            });
+        }
+
+        if (outputText) {
+            navigator.clipboard.writeText(outputText).then(() => {
+                const copiedMsg = $(this).closest("section").find(".copied");
+                copiedMsg.css("visibility", "visible");
+
+                setTimeout(() => {
+                    copiedMsg.css("visibility", "hidden");
+                }, 2000);
+            });
+        }
+    });
 });
