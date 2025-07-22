@@ -46,7 +46,7 @@ export const POST: APIRoute = async ({ request }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: "gpt-4.1",
+        model: "gpt-4o",
         messages: [{ role: 'user', content: finalPrompt }],
         temperature: 0.7,
         max_tokens: 500,
