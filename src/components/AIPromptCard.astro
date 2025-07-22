@@ -4,11 +4,11 @@ const { id, title, description, placeholder } = Astro.props;
 
 <section
     id={id}
-    class="p-6 rounded-xl shadow-m col-12 col-lg-8 m-auto d-none prompt-cards"
+    class="p-6 rounded-xl shadow-m m-auto d-none prompt-cards"
 >
-    <h2 class="mb-2 text-white text-center">{title}</h2>
+    <h2 class="mb-2 text-white text-center d-none">{title}</h2>
     <p class="mb-2 text-white text-center">{description}</p>
-    <div class="d-flex gap-3 flex-column flex-md-row">
+    <div class="d-flex gap-3 flex-column">
         <form class="ai-form d-flex flex-column col" data-section={id}>
             <textarea
                 name="userInput"
@@ -22,7 +22,7 @@ const { id, title, description, placeholder } = Astro.props;
         </form>
         <div class="response-output-container p-2 rounded col">
             <div class="text-end">
-                <button id="copyOutput" class="view-modal">
+                <button id="copyOutput" class="copyOutput">
                     <i class="fa-solid fa-copy"></i>
                 </button>
             </div>

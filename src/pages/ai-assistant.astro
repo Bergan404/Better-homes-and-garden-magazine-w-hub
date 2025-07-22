@@ -31,40 +31,42 @@ import Logo from "../assets/images/logo.png";
         <div class="text-center text-white ai-page-header">
             <h3 class="fw-bold">AI ASSISTANT</h3>
             <p>
-                Select one of the tools below to generate custom content
-                for your real estate needs in seconds.
+                Select one of the tools below to generate custom content for
+                your real estate needs in seconds.
             </p>
         </div>
         <div class="text-white ai-options">
-            <ul class="px-6 list-unstyled d-flex text-center flex-wrap justify-content-center gap-2">
-                <li class="col-3 col-md">
+            <ul
+                class="col-6 m-auto px-6 list-unstyled d-flex text-center flex-wrap justify-content-center gap-2 flex-column align-content-centers"
+            >
+                <li class="col-3 col-12 ai-select">
                     <button
                         class="ai-select-btn text-decoration-none"
-                        data-target="#listing">Listing Generator</button
+                        data-target="#listing">🏡 Listing Generator</button
                     >
                 </li>
-                <li class="col-3 col-md">
+                <li class="col-3 col-12 ai-select">
                     <button
                         class="ai-select-btn text-decoration-none"
-                        data-target="#instagram">Instagram Captions</button
+                        data-target="#instagram">📸 Instagram Captions</button
                     >
                 </li>
-                <li class="col-3 col-md">
+                <li class="col-3 col-12 ai-select">
                     <button
                         class="ai-select-btn text-decoration-none"
-                        data-target="#followup">Lead Follow-Ups</button
+                        data-target="#followup">📞 Lead Follow-Ups</button
                     >
                 </li>
-                <li class="col-3 col-md">
+                <li class="col-3 col-12 ai-select">
                     <button
                         class="ai-select-btn text-decoration-none"
-                        data-target="#objections">Objection Handlers</button
+                        data-target="#objections">💬 Objection Handlers</button
                     >
                 </li>
-                <li class="col-3 col-md">
+                <li class="col-3 col-12 ai-select">
                     <button
                         class="ai-select-btn text-decoration-none"
-                        data-target="#coaching">Agent Coaching</button
+                        data-target="#coaching">🎯 Agent Coaching</button
                     >
                 </li>
             </ul>
@@ -73,35 +75,65 @@ import Logo from "../assets/images/logo.png";
         <main class="my-4">
             <AIPromptCard
                 id="listing"
+                style="display: none"
                 title="Listing Description Generator"
                 description="Craft compelling property descriptions that highlight key features and attract potential buyers with clear, engaging language."
                 placeholder="Describe the property..."
             />
             <AIPromptCard
                 id="instagram"
+                style="display: none"
                 title="Instagram & Social Captions"
                 description="Generate attention-grabbing captions tailored for real estate social posts to boost engagement and showcase listings effectively."
                 placeholder="What's the property or theme?"
             />
             <AIPromptCard
                 id="followup"
+                style="display: none"
                 title="Lead Follow-Up Templates"
                 description="Create ready-to-send follow-up messages for new leads to stay top of mind and increase your chances of converting interest into action."
                 placeholder="Provide lead info/context..."
             />
             <AIPromptCard
                 id="objections"
+                style="display: none"
                 title="Objection Handlers"
                 description="Get smart, persuasive responses to common client objections—perfect for overcoming hesitation and moving deals forward confidently."
                 placeholder="What's the client objection?"
             />
             <AIPromptCard
                 id="coaching"
+                style="display: none"
                 title="Agent Coaching"
                 description="Receive personalized scripts and strategies to enhance your communication, boost client trust, and grow as a top-performing agent."
                 placeholder="What do you want advice on?"
             />
         </main>
+
+        <!-- Modal Container -->
+        <div
+            class="modal fade"
+            id="aiPromptModal"
+            tabindex="-1"
+            aria-labelledby="aiPromptModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content bg-dark text-white p-4">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="aiPromptModalLabel">
+                            AI Tool
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close btn-close-white"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="aiPromptModalBody"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="layout">

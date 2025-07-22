@@ -1,30 +1,18 @@
-/*
- * Magazine sample
-*/
 
 function addPage(page, book) {
 
 	var id, pages = book.turn('pages');
 
-	// Create a new element for this page
 	var element = $('<div />', {});
 
-	// Add the page to the flipbook
 	if (book.turn('addPage', element, page)) {
 
-		// Add the initial HTML
-		// It will contain a loader indicator and a gradient
 		element.html('<div class="gradient"></div><div class="loader"></div>');
 
-		// Load the page
 		loadPage(page, element);
 	}
 
 }
-
-
-
-// Zoom in / Zoom out
 
 function zoomTo(event) {
 
@@ -41,8 +29,6 @@ function zoomTo(event) {
 		}, 1);
 
 }
-
-// Add region
 
 function addRegion(region, pageElement) {
 
@@ -61,8 +47,6 @@ function addRegion(region, pageElement) {
 
 	reg.appendTo(pageElement);
 }
-
-// Process click on a region
 
 function regionClick(event) {
 
@@ -83,8 +67,6 @@ function regionClick(event) {
 	}
 
 }
-
-// Process the data of every region
 
 function processRegion(region, regionType) {
 
@@ -117,8 +99,6 @@ function processRegion(region, regionType) {
 
 }
 
-// http://code.google.com/p/chromium/issues/detail?id=128488
-
 function isChrome() {
 
 	return navigator.userAgent.indexOf('Chrome')!=-1;
@@ -136,8 +116,6 @@ function disableControls(page) {
 		else
 			$('.next-button').show();
 }
-
-// Set the width and height for the viewport
 
 function resizeViewport() {
 
@@ -200,14 +178,9 @@ function resizeViewport() {
 
 }
 
-
-// Number of views in a flipbook
-
 function numberOfViews(book) {
 	return book.turn('pages') / 2 + 1;
 }
-
-// Current view in a flipbook
 
 function getViewNumber(book, page) {
 	return parseInt((page || book.turn('page'))/2 + 1, 10);
@@ -257,15 +230,11 @@ function setPreview(view) {
 	});
 }
 
-// Width of the flipbook when zoomed in
-
 function largeMagazineWidth() {
 
 	return 2214;
 
 }
-
-// decode URL Parameters
 
 function decodeParams(data) {
 
@@ -278,8 +247,6 @@ function decodeParams(data) {
 
 	return obj;
 }
-
-// Calculate the width and height of a square within another square
 
 function calculateBound(d) {
 

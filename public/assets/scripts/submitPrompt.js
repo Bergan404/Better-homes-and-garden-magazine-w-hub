@@ -33,19 +33,77 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// $(document).ready(function () {
+//     let currentSection = null;
+
+//     $(".ai-select-btn").on("click", function () {
+//         const target = $(this).data("target");
+//         currentSection = target;
+
+//         $("section[id]").addClass("d-none");
+//         $(target).removeClass("d-none");
+//     });
+
+//     $("#copyOutput").on("click", function () {
+//         const outputText = $(currentSection).find(".ai-output").text().trim();
+
+//         if (!outputText) {
+//             navigator.clipboard.writeText(outputText).then(() => {
+//                 const copiedMsg = $(this).closest("section").find(".copied");
+//                 copiedMsg.css("visibility", "visible");
+
+//                 setTimeout(() => {
+//                     copiedMsg.css("visibility", "hidden");
+//                 }, 2000);
+//             });
+//         }
+
+//         if (outputText) {
+//             navigator.clipboard.writeText(outputText).then(() => {
+//                 const copiedMsg = $(this).closest("section").find(".copied");
+//                 copiedMsg.css("visibility", "visible");
+
+//                 setTimeout(() => {
+//                     copiedMsg.css("visibility", "hidden");
+//                 }, 2000);
+//             });
+//         }
+//     });
+// });
+
+let $activeSection = null;
+
 $(document).ready(function () {
-    let currentSection = null;
-
     $(".ai-select-btn").on("click", function () {
-        const target = $(this).data("target");
-        currentSection = target;
+        const targetId = $(this).data("target");
+        const $section = $(targetId);
+        currentSection = targetId;
 
-        $("section[id]").addClass("d-none");
-        $(target).removeClass("d-none");
+        $activeSection = $section;
+        $("#aiPromptModalBody").empty().append($section);
+        $section.removeClass("d-none");
+
+        const titleText = $section.find("h2").text();
+        $("#aiPromptModalLabel").text(titleText);
+
+        const modal = new bootstrap.Modal(document.getElementById("aiPromptModal"));
+        modal.show();
     });
 
-    $("#copyOutput").on("click", function () {
-        const outputText = $(currentSection).find(".ai-output").text().trim();
+    $("#aiPromptModal").on("hidden.bs.modal", function () {
+        document.activeElement?.blur();
+
+        if ($activeSection) {
+            $("main").append($activeSection);
+            $activeSection.addClass("d-none");
+            $activeSection = null;
+        }
+    });
+
+    let currentSection = null;
+
+     $(".copyOutput").on("click", function () {
+         const outputText = $(currentSection).find(".ai-output").text().trim();
 
         if (!outputText) {
             navigator.clipboard.writeText(outputText).then(() => {
