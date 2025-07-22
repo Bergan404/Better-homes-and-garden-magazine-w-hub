@@ -27,7 +27,25 @@ import Logo from "../assets/images/logo.png";
         </div>
     </header>
 
-    <div class="container py-5 flex min-h-screen">
+    <div class="container">
+        <div class="chat-wrapper">
+            <div class="chat-box" id="chatBox">
+                <!-- Messages will appear here -->
+            </div>
+            <form id="chatForm">
+                <input
+                type="text"
+                id="userInput"
+                class="form-control"
+                placeholder="Type your question..."
+                required
+                />
+                <button type="submit" class="btn btn-success">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container py-5 flex min-h-screen d-none">
         <div class="text-center text-white ai-page-header">
             <h3 class="fw-bold">AI ASSISTANT</h3>
             <p>

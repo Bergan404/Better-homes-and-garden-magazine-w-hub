@@ -115,3 +115,40 @@ textarea {
         margin: 0;
     }
 }
+
+.chat-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 20px;
+  color: #fff;
+}
+
+.chat-box {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+  border-bottom: 1px solid #444;
+}
+
+.message {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+.user-msg {
+  background-color: #2e8b57;
+  text-align: right;
+}
+
+.ai-msg {
+  background-color: #333;
+  text-align: left;
+}
+
+#userInput {
+  width: 100%;
+  margin-top: 10px;
+}

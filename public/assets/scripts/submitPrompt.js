@@ -31,45 +31,49 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    const form = document.getElementById("chatForm");
+    const input = document.getElementById("userInput");
+    const chatBox = document.getElementById("chatBox");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const userText = input.value.trim();
+        if (!userText) return;
+
+        appendMessage("user", userText);
+        input.value = "";
+
+        try {
+            const response = await fetch("/api/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: userText }),
+            });
+
+            if (!response.ok) {
+                const text = await response.text();
+                console.error("API error:", response.status, text);
+                appendMessage("ai", `Error ${response.status}: ${text}`);
+                return;
+            }
+
+            const data = await response.json();
+            appendMessage("ai", data.reply || "No response.");
+        } catch (err) {
+            appendMessage("ai", "Error: Could not get a response.");
+            console.error(err);
+        }
+    });
+
+    function appendMessage(sender, text) {
+        const msg = document.createElement("div");
+        msg.className = `message ${sender}-msg`;
+        msg.textContent = text;
+        chatBox.appendChild(msg);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
 });
-
-// $(document).ready(function () {
-//     let currentSection = null;
-
-//     $(".ai-select-btn").on("click", function () {
-//         const target = $(this).data("target");
-//         currentSection = target;
-
-//         $("section[id]").addClass("d-none");
-//         $(target).removeClass("d-none");
-//     });
-
-//     $("#copyOutput").on("click", function () {
-//         const outputText = $(currentSection).find(".ai-output").text().trim();
-
-//         if (!outputText) {
-//             navigator.clipboard.writeText(outputText).then(() => {
-//                 const copiedMsg = $(this).closest("section").find(".copied");
-//                 copiedMsg.css("visibility", "visible");
-
-//                 setTimeout(() => {
-//                     copiedMsg.css("visibility", "hidden");
-//                 }, 2000);
-//             });
-//         }
-
-//         if (outputText) {
-//             navigator.clipboard.writeText(outputText).then(() => {
-//                 const copiedMsg = $(this).closest("section").find(".copied");
-//                 copiedMsg.css("visibility", "visible");
-
-//                 setTimeout(() => {
-//                     copiedMsg.css("visibility", "hidden");
-//                 }, 2000);
-//             });
-//         }
-//     });
-// });
 
 let $activeSection = null;
 
@@ -102,8 +106,8 @@ $(document).ready(function () {
 
     let currentSection = null;
 
-     $(".copyOutput").on("click", function () {
-         const outputText = $(currentSection).find(".ai-output").text().trim();
+    $(".copyOutput").on("click", function () {
+        const outputText = $(currentSection).find(".ai-output").text().trim();
 
         if (!outputText) {
             navigator.clipboard.writeText(outputText).then(() => {
@@ -128,3 +132,4 @@ $(document).ready(function () {
         }
     });
 });
+
