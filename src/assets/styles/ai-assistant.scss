@@ -116,39 +116,75 @@ textarea {
     }
 }
 
+.thread-top-container {
+    margin-top: calc(25px + 30dvh);
+}
+
 .chat-wrapper {
-  max-width: 600px;
-  margin: 0 auto;
-  background: #1a1a1a;
-  border-radius: 8px;
-  padding: 20px;
-  color: #fff;
+    //   max-width: 600px;
+    margin: 0 auto;
+    //   background: #1a1a1a;
+    border-radius: 8px;
+    padding: 20px;
+    color: #fff;
 }
 
 .chat-box {
-  max-height: 400px;
-  overflow-y: auto;
-  padding: 10px;
-  border-bottom: 1px solid #444;
+    //   max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+}
+
+#chatForm {
+    background-color: rgb(48, 48, 48);
+    border-radius: 15px;
+    padding: 15px;
 }
 
 .message {
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
 }
 
 .user-msg {
-  background-color: #2e8b57;
-  text-align: right;
+    background-color: #272727;
+    text-align: right;
+}
+
+.prompt-btn {
+    border: none;
+    background-color: #282828;
+    color: rgb(127, 127, 127);
+    font-size: 1em;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+
+    svg {
+        width: 100%;
+        height: 100%;
+        
+        path {
+
+        }
+    }
 }
 
 .ai-msg {
-  background-color: #333;
-  text-align: left;
+    background-color: #333;
+    text-align: left;
 }
 
 #userInput {
-  width: 100%;
-  margin-top: 10px;
+    width: 100%;
+    // margin-top: 10px;
+    background: none;
+    border: none;
+    color: white;
+
+    &::placeholder {
+        color: white;
+    }
 }
