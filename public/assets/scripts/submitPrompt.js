@@ -32,6 +32,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    const bottom_container = document.querySelector(".thread-bottom-container");
+    const top_container = document.querySelector(".thread-top-container");
+    const chat_box = document.querySelector(".chat-box");
+
+    function activateFullHeightMode() {
+        bottom_container.classList.add("full-height-mode");
+        top_container.classList.add("d-none");
+        chat_box.classList.remove("hidden");
+        localStorage.setItem("fullHeightMode", "true");
+    }
+
+    if (localStorage.getItem("fullHeightMode") === "true") {
+        activateFullHeightMode();
+    }
+
     const form = document.getElementById("chatForm");
     const input = document.getElementById("userInput");
     const chatBox = document.getElementById("chatBox");
@@ -43,6 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         appendMessage("user", userText);
         input.value = "";
+
+        activateFullHeightMode();
+
+        const loadingMsg = appendMessage("ai", "...");
 
         try {
             const response = await fetch("/api/chat", {
@@ -59,12 +78,33 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const data = await response.json();
-            appendMessage("ai", data.reply || "No response.");
+            loadingMsg.remove();
+            typeMessage("ai", data.reply || "No response");
         } catch (err) {
+            loadingMsg.remove();
             appendMessage("ai", "Error: Could not get a response.");
             console.error(err);
         }
     });
+
+    function typeMessage(sender, text, speed = 20) {
+        const msg = document.createElement("div");
+        msg.className = `message ${sender}-msg`;
+        chatBox.appendChild(msg);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        let index = 0;
+        function type() {
+            if (index < text.length) {
+                msg.textContent += text.charAt(index);
+                index++;
+                chatBox.scrollTop = chatBox.scrollHeight;
+                setTimeout(type, speed);
+            }
+        }
+
+        type();
+    }
 
     function appendMessage(sender, text) {
         const msg = document.createElement("div");
@@ -72,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         msg.textContent = text;
         chatBox.appendChild(msg);
         chatBox.scrollTop = chatBox.scrollHeight;
+        return msg;
     }
 });
 
