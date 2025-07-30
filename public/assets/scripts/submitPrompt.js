@@ -32,6 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    document.getElementById("newChatBtn").addEventListener("click", () => {
+        chatBox.innerHTML = "";
+        localStorage.removeItem("chatHistory");
+        localStorage.removeItem("fullHeightMode");
+        location.reload();
+    });
+
     const bottom_container = document.querySelector(".thread-bottom-container");
     const top_container = document.querySelector(".thread-top-container");
     const chat_box = document.querySelector(".chat-box");
@@ -79,7 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const data = await response.json();
             loadingMsg.remove();
-            typeMessage("ai", data.reply || "No response");
+            const dynamicSpeed = data.reply.length > 500 ? 5 : 15;
+            typeMessage("ai", data.reply || "No response", dynamicSpeed);
         } catch (err) {
             loadingMsg.remove();
             appendMessage("ai", "Error: Could not get a response.");
@@ -87,31 +95,66 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    function typeMessage(sender, text, speed = 20) {
+    function typeMessage(sender, text, speed) {
         const msg = document.createElement("div");
         msg.className = `message ${sender}-msg`;
         chatBox.appendChild(msg);
         chatBox.scrollTop = chatBox.scrollHeight;
 
         let index = 0;
+        let currentText = "";
+
         function type() {
             if (index < text.length) {
-                msg.textContent += text.charAt(index);
+                currentText += text.charAt(index);
+                msg.textContent = currentText; // show as plain text while typing
                 index++;
                 chatBox.scrollTop = chatBox.scrollHeight;
                 setTimeout(type, speed);
+            } else {
+                // replace plain text with rendered Markdown
+                msg.innerHTML = marked.parse(text);
+                saveChatHistory();
             }
         }
 
         type();
     }
 
+    // Save chat to localStorage
+    function saveChatHistory() {
+        const messages = [];
+        chatBox.querySelectorAll('.message').forEach(msg => {
+            messages.push({
+                sender: msg.classList.contains('user-msg') ? 'user' : 'ai',
+                text: msg.textContent,
+            });
+        });
+        localStorage.setItem('chatHistory', JSON.stringify(messages));
+    }
+
+    // Load chat from localStorage
+    function loadChatHistory() {
+        const history = localStorage.getItem('chatHistory');
+        if (!history) return;
+
+        const messages = JSON.parse(history);
+        messages.forEach(msg => {
+            appendMessage(msg.sender, msg.text);
+        });
+
+        activateFullHeightMode();
+    }
+
+    loadChatHistory();
+
     function appendMessage(sender, text) {
         const msg = document.createElement("div");
         msg.className = `message ${sender}-msg`;
-        msg.textContent = text;
+        msg.innerHTML = marked.parse(text);
         chatBox.appendChild(msg);
         chatBox.scrollTop = chatBox.scrollHeight;
+        saveChatHistory();
         return msg;
     }
 });

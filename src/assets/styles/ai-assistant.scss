@@ -136,20 +136,20 @@ textarea {
     // border-bottom: 1px solid #444;
 
     &::-webkit-scrollbar {
-    width: 10px;
-    display: none;
+        width: 10px;
+        display: none;
     }
 
     &::-webkit-scrollbar-track {
-    background: #f1f1f1;
+        background: #f1f1f1;
     }
 
     &::-webkit-scrollbar-thumb {
-    background: #888;
+        background: #888;
     }
 
     &::-webkit-scrollbar-thumb:hover {
-    background: #555;
+        background: #555;
     }
 }
 
@@ -170,6 +170,10 @@ textarea {
     background-color: #444444;
     width: fit-content;
     margin-left: auto;
+    p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
 }
 
 .prompt-btn {
@@ -185,15 +189,33 @@ textarea {
         width: 100%;
         height: 100%;
 
-        path {
-
-        }
+        path {}
     }
 }
 
 .ai-msg {
     // background-color: #333;
     text-align: left;
+
+    p {
+        margin-bottom: 0.5rem;
+    }
+
+    strong {
+        font-weight: 600;
+    }
+
+    ul,
+    ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid #444;
+        margin: 1rem 0;
+    }
 }
 
 #userInput {
@@ -214,35 +236,70 @@ textarea {
 }
 
 .typing::after {
-  content: "⏳ typing...";
-  color: #888;
-  font-style: italic;
+    content: "⏳ typing...";
+    color: #888;
+    font-style: italic;
 }
 
 .full-height-mode {
-  .thread-top-container {
-    padding-top: 0;
-  }
+    .thread-top-container {
+        padding-top: 0;
+    }
 
-  .chat-wrapper {
-    height: 100%;
-    // display: flex;
-    // flex-direction: column;
+    .chat-wrapper {
+        height: 100%;
+        // display: flex;
+        // flex-direction: column;
+        position: relative;
+    }
+
+    .chat-box {
+        flex-grow: 1;
+        overflow-y: auto;
+        margin-bottom: 15px;
+        height: 90%;
+    }
+
+    #chatForm {
+        border-top: 1px solid #444;
+        padding-top: 15px;
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+    }
+}
+
+.layout-sidebar {
+      z-index: 0;
+    top: 0;
+    left: 0;
+    height: 100vh;
     position: relative;
-  }
 
-  .chat-box {
-    flex-grow: 1;
-    overflow-y: auto;
-    margin-bottom: 15px;
-    height: 90%;
-  }
-
-  #chatForm {
-    border-top: 1px solid #444;
-    padding-top: 15px;
+  &:before {
+    content: "";
     position: absolute;
-    bottom: 10px;
-    width: 100%;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    border: 1px solid #fff;
+    border-top: none;
+    border-bottom: none;
+    opacity: 0.15;
+  }
+
+  .box {
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    color: #fff;
+    transform-origin: 0% 10%;
+    transform: rotate(-90deg);
+    font-size: 9px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    opacity: 0.4;
   }
 }

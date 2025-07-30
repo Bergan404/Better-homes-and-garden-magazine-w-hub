@@ -13,6 +13,7 @@
     "@astrojs/vercel": "^8.2.3",
     "astro": "^5.12.1",
     "astro-bootstrap": "^0.7.0",
+    "marked": "^16.1.1",
     "openai": "^5.10.1",
     "sass": "^1.80.3"
   }
