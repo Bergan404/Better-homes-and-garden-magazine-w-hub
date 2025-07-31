@@ -54,14 +54,68 @@ document.addEventListener('DOMContentLoaded', () => {
         activateFullHeightMode();
     }
 
+    let selectedPrompt = "";
+
     const form = document.getElementById("chatForm");
     const input = document.getElementById("userInput");
     const chatBox = document.getElementById("chatBox");
+
+    const promptToggle = document.getElementById("promptToggle");
+    const promptMenu = document.getElementById("promptMenu");
+
+    promptToggle.addEventListener("click", () => {
+        promptMenu.classList.toggle("d-none");
+    });
+
+    promptMenu.querySelectorAll("li").forEach((item) => {
+        item.addEventListener("click", () => {
+            selectedPrompt = item.dataset.section;
+            selectedPromptText = item.dataset.text;
+
+            const existingLabel = document.querySelector(".prompt-label");
+            if (existingLabel) existingLabel.remove();
+
+            const label = document.createElement("div");
+            const name = document.createElement("p");
+            const close = document.createElement("span");
+
+            label.className = "prompt-label mb-2 text-white d-flex justify-content-between align-items-center";
+            name.className = "mb-0";
+            close.className = "mb-0 prompt-close";
+            name.textContent = selectedPromptText;
+            close.innerHTML = `<i class="fa-solid fa-xmark" style="cursor:pointer;"></i>`;
+
+            close.addEventListener("click", () => {
+                selectedPrompt = "";
+                selectedPromptText = "";
+                label.remove();
+                chatBox.classList.remove("prompt-spacing");
+            });
+
+            label.appendChild(name);
+            label.appendChild(close);
+            form.insertBefore(label, input);
+
+            promptMenu.classList.add("d-none");
+            chatBox.classList.add("prompt-spacing");
+            input.focus();
+        });
+    });
+
+
+    document.addEventListener("click", (e) => {
+        if (!promptToggle.contains(e.target) && !promptMenu.contains(e.target)) {
+            promptMenu.classList.add("d-none");
+        }
+    });
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         const userText = input.value.trim();
         if (!userText) return;
+
+        const isPrompt = !!selectedPrompt;
+        // const fullMessage = isPrompt ? `${selectedPromptText} ${userText}` : userText;
 
         appendMessage("user", userText);
         input.value = "";
@@ -71,11 +125,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const loadingMsg = appendMessage("ai", "...");
 
         try {
-            const response = await fetch("/api/chat", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message: userText }),
-            });
+            let response;
+
+            if (isPrompt) {
+                response = await fetch("/api/generate", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        promptType: selectedPrompt,
+                        userInput: userText,
+                    }),
+                });
+            } else {
+                response = await fetch("/api/chat", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: userText }),
+                });
+            }
 
             if (!response.ok) {
                 const text = await response.text();
@@ -86,8 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const data = await response.json();
             loadingMsg.remove();
-            const dynamicSpeed = data.reply.length > 500 ? 5 : 15;
-            typeMessage("ai", data.reply || "No response", dynamicSpeed);
+            const replyText = isPrompt ? data.result : data.reply;
+            const dynamicSpeed = replyText.length > 500 ? 5 : 15;
+            typeMessage("ai", replyText || "No response", dynamicSpeed);
         } catch (err) {
             loadingMsg.remove();
             appendMessage("ai", "Error: Could not get a response.");
@@ -107,12 +175,11 @@ document.addEventListener('DOMContentLoaded', () => {
         function type() {
             if (index < text.length) {
                 currentText += text.charAt(index);
-                msg.textContent = currentText; // show as plain text while typing
+                msg.textContent = currentText;
                 index++;
                 chatBox.scrollTop = chatBox.scrollHeight;
                 setTimeout(type, speed);
             } else {
-                // replace plain text with rendered Markdown
                 msg.innerHTML = marked.parse(text);
                 saveChatHistory();
             }
@@ -121,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
         type();
     }
 
-    // Save chat to localStorage
     function saveChatHistory() {
         const messages = [];
         chatBox.querySelectorAll('.message').forEach(msg => {
@@ -133,7 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('chatHistory', JSON.stringify(messages));
     }
 
-    // Load chat from localStorage
     function loadChatHistory() {
         const history = localStorage.getItem('chatHistory');
         if (!history) return;

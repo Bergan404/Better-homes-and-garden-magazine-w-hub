@@ -43,6 +43,13 @@ import Bug from "../assets/images/bug-fill.svg?raw"
                     <!-- Messages will appear here -->
                 </div>
                 <form id="chatForm">
+                    <ul id="promptMenu" class="prompt-dropdown d-none">
+                        <li data-text="🏡 Listing Generator" data-section="listing">🏡 Listing Generator</li>
+                        <li data-text="📸 Instagram Captions" data-section="instagram">📸 Instagram Captions</li>
+                        <li data-text="📞 Lead Follow-Ups" data-section="followup">📞 Lead Follow-Ups</li>
+                        <li data-text="💬 Objection Handlers" data-section="objections">💬 Objection Handlers</li>
+                        <li data-text="🎯 Agent Coaching" data-section="coaching">🎯 Agent Coaching</li>
+                    </ul>
                     <input
                         type="text"
                         id="userInput"
@@ -53,7 +60,7 @@ import Bug from "../assets/images/bug-fill.svg?raw"
                         required
                     />
                     <div class="w-100 d-flex justify-content-end">
-                        <button class="prompt-btn"> <Fragment set:html={Bug} /></button>
+                        <button id="promptToggle" class="prompt-btn"> <Fragment set:html={Bug} /></button>
                         <button type="submit" class="prompt-btn"><i class="fa-solid fa-arrow-up"></i></button>
                     </div>
                 </form>
