@@ -63,6 +63,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const promptToggle = document.getElementById("promptToggle");
     const promptMenu = document.getElementById("promptMenu");
 
+    input.addEventListener("input", () => {
+        input.style.height = "auto";
+        input.style.height = input.scrollHeight + "px";
+    });
+    input.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            form.dispatchEvent(new Event("submit"));
+        }
+    });
+
     promptToggle.addEventListener("click", () => {
         promptMenu.classList.toggle("d-none");
     });
@@ -216,7 +227,53 @@ document.addEventListener('DOMContentLoaded', () => {
     function appendMessage(sender, text) {
         const msg = document.createElement("div");
         msg.className = `message ${sender}-msg`;
-        msg.innerHTML = marked.parse(text);
+
+        // Message content (supports markdown)
+        const content = document.createElement("div");
+        content.className = "message-content";
+        content.innerHTML = marked.parse(text);
+        msg.appendChild(content);
+
+        // ✅ Only append toolbar if it's an AI message
+        if (sender === "ai") {
+            const toolbar = document.createElement("div");
+            toolbar.className = "message-toolbar mt-2 d-flex gap-2";
+
+            const copyBtn = document.createElement("button");
+            copyBtn.className = "toolbar-btn";
+            copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i>';
+            copyBtn.title = "Copy";
+            copyBtn.onclick = () => {
+                navigator.clipboard.writeText(content.innerText);
+                copyBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
+                setTimeout(() => {
+                    copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i>';
+                }, 2000);
+            };
+
+            const thumbsUpBtn = document.createElement("button");
+            thumbsUpBtn.className = "toolbar-btn";
+            thumbsUpBtn.innerHTML = '<i class="fa-regular fa-thumbs-up"></i>';
+            thumbsUpBtn.title = "Good response";
+
+            const thumbsDownBtn = document.createElement("button");
+            thumbsDownBtn.className = "toolbar-btn";
+            thumbsDownBtn.innerHTML = '<i class="fa-regular fa-thumbs-down"></i>';
+            thumbsDownBtn.title = "Bad response";
+
+            // const shareBtn = document.createElement("button");
+            // shareBtn.className = "toolbar-btn";
+            // shareBtn.innerHTML = '<i class="fa-solid fa-share-nodes"></i>';
+            // shareBtn.title = "Share";
+            // shareBtn.onclick = () => {
+            //     navigator.clipboard.writeText(content.innerText);
+            //     alert("Response copied for sharing!");
+            // };
+
+            toolbar.append(copyBtn, thumbsUpBtn, thumbsDownBtn);
+            msg.appendChild(toolbar);
+        }
+
         chatBox.appendChild(msg);
         chatBox.scrollTop = chatBox.scrollHeight;
         saveChatHistory();

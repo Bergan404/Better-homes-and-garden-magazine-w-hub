@@ -222,10 +222,11 @@ textarea {
 
 #userInput {
     width: 100%;
-    // margin-top: 10px;
     background: none;
     border: none;
     color: white;
+    resize: none;
+    overflow: hidden;
 
     &::placeholder {
         color: white;
@@ -290,6 +291,28 @@ textarea {
         bottom: 10px;
         width: 100%;
     }
+
+    .message-toolbar {
+        font-size: 14px;
+
+        .toolbar-btn {
+            background: none;
+            border: none;
+            color: #ccc;
+            cursor: pointer;
+            transition: 0.2s;
+
+            &:hover {
+                color: #fff;
+                transform: scale(1.1);
+            }
+
+            i {
+                pointer-events: none;
+            }
+        }
+    }
+
 }
 
 .layout-sidebar {
