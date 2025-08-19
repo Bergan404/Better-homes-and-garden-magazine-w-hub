@@ -4,14 +4,15 @@ import Layout from "../layouts/Layout.astro";
 
 import { Image } from "astro:assets";
 import Logo from "../assets/images/logo.png";
+import Bug from "../assets/images/bug-fill.svg?raw";
 ---
 
 <Layout title="Better Homes and Gardens Cloud">
-    <div class="loader">
+    <!-- <div class="loader">
         <Image src={Logo} alt="BHGRE Loader" />
-    </div>
+    </div> -->
 
-    <header class="container-fluid p-0" role="banner">
+    <!-- <header class="container-fluid p-0" role="banner">
         <div class="container py-2">
             <div class="row justify-content-center align-items-center">
                 <div class="col-auto text-center text-white">
@@ -25,9 +26,89 @@ import Logo from "../assets/images/logo.png";
                 </div>
             </div>
         </div>
-    </header>
+    </header> -->
+    <div class="d-flex">
+        <div class="layout-sidebar p-3">
+            <!-- <a href="/">
+                <Image
+                    src={Logo}
+                    alt="BHGRE Logo"
+                    style="width:300px;height:auto;"
+                />
+            </a> -->
+            <button id="newChatBtn" class="prompt-btn"
+                ><i class="fa-regular fa-pen-to-square"></i></button
+            >
+        </div>
 
-    <div class="container py-5 flex min-h-screen">
+        <div class="container vh-100 thread-bottom-container">
+            <div class="thread-top-container">
+                <div class="animation-container">
+                    <div id="concentric-rings" class="circle-container"></div>
+                </div>
+                <h3 class="text-center text-white">Where should we begin?</h3>
+                <!-- <div class="green_aura col-8 m-auto mt-4"></div> -->
+            </div>
+
+            <div class="chat-wrapper col-12 col-md-8">
+                <div class="chat-box hidden" id="chatBox">
+                    <!-- Messages will appear here -->
+                </div>
+                <form id="chatForm">
+                    <ul id="promptMenu" class="prompt-dropdown d-none">
+                        <li
+                            data-text="🏡 Listing Generator"
+                            data-section="listing"
+                        >
+                            🏡 Listing Generator
+                        </li>
+                        <li
+                            data-text="📸 Instagram Captions"
+                            data-section="instagram"
+                        >
+                            📸 Instagram Captions
+                        </li>
+                        <li
+                            data-text="📞 Lead Follow-Ups"
+                            data-section="followup"
+                        >
+                            📞 Lead Follow-Ups
+                        </li>
+                        <li
+                            data-text="💬 Objection Handlers"
+                            data-section="objections"
+                        >
+                            💬 Objection Handlers
+                        </li>
+                        <li
+                            data-text="🎯 Agent Coaching"
+                            data-section="coaching"
+                        >
+                            🎯 Agent Coaching
+                        </li>
+                    </ul>
+                    <textarea
+                        id="userInput"
+                        autocomplete="off"
+                        spellcheck="false"
+                        class="form-control"
+                        placeholder="Type your question..."
+                        rows="1"
+                        required></textarea>
+                    <div class="w-100 d-flex justify-content-end gap-1">
+                        <button id="promptToggle" class="prompt-btn">
+                            <Fragment set:html={Bug} /></button
+                        >
+                        <button type="submit" class="prompt-btn"
+                            ><i class="fa-solid fa-arrow-up"></i></button
+                        >
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container py-5 flex min-h-screen d-none">
         <div class="text-center text-white ai-page-header">
             <h3 class="fw-bold">AI ASSISTANT</h3>
             <p>
@@ -134,9 +215,5 @@ import Logo from "../assets/images/logo.png";
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="layout">
-        <div class="box">BHGRE<br />COPYRIGHT<br />All Rights Reserved</div>
     </div>
 </Layout>

@@ -10,9 +10,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/vercel": "^8.2.1",
-    "astro": "^5.11.0",
+    "@astrojs/vercel": "^8.2.3",
+    "astro": "^5.12.1",
     "astro-bootstrap": "^0.7.0",
+    "astro-seo": "^0.8.4",
+    "marked": "^16.1.1",
+    "openai": "^5.10.1",
     "sass": "^1.80.3"
   }
 }

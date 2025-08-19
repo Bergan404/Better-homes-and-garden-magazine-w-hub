@@ -1,7 +1,7 @@
 export const prerender = false;
 
 import type { APIRoute } from 'astro';
-console.log("Loaded API Key:", import.meta.env.OPENAI_API_KEY);
+// console.log("Loaded API Key:", import.meta.env.OPENAI_API_KEY);
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -54,7 +54,7 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
     const data = await response.json();
-    console.log('OpenAI response:', JSON.stringify(data, null, 2));
+    // console.log('OpenAI response:', JSON.stringify(data, null, 2));
 
     if (!response.ok) {
       console.error('OpenAI API error:', data);

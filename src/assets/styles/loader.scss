@@ -25,10 +25,10 @@
   align-items: center;
   justify-content: center;
 
-  svg {
-    width: 30vh;
-    height: auto;
-  }
+  // svg {
+  //   width: 30vh;
+  //   height: auto;
+  // }
 }
 
 // General styles for getting central and sizing
@@ -95,30 +95,30 @@ $dashOffsetEnd: 0;
   }
 }
 
-svg {
-  @include animation(
-    loading,
-    2.3s,
-    3s,
-    infinite,
-    cubic-bezier(0.785, 0.135, 0.15, 0.86)
-  );
-}
+// svg {
+//   @include animation(
+//     loading,
+//     2.3s,
+//     3s,
+//     infinite,
+//     cubic-bezier(0.785, 0.135, 0.15, 0.86)
+//   );
+// }
 
-path {
-  stroke: $primaryColour;
-  fill: $primaryColour;
-  fill-opacity: 0;
-  stroke-width: 0.5;
-  stroke-dasharray: $dashOffsetStart;
-  stroke-dashoffset: $dashOffsetStart;
-  @include animation(stroke-draw, 0s, 3s, 1, ease-in-out);
-}
+// path {
+//   stroke: $primaryColour;
+//   fill: $primaryColour;
+//   fill-opacity: 0;
+//   stroke-width: 0.5;
+//   stroke-dasharray: $dashOffsetStart;
+//   stroke-dashoffset: $dashOffsetStart;
+//   @include animation(stroke-draw, 0s, 3s, 1, ease-in-out);
+// }
 
-#arrow-bottom path {
-  animation-delay: 0.5s;
-}
+// #arrow-bottom path {
+//   animation-delay: 0.5s;
+// }
 
-#arrow-side path {
-  animation-delay: 1s;
-}
+// #arrow-side path {
+//   animation-delay: 1s;
+// }
