@@ -29,18 +29,28 @@ import Bug from "../assets/images/bug-fill.svg?raw";
     </header> -->
     <div class="d-flex">
         <div class="layout-sidebar p-3">
+            <!-- <a href="/">
+                <Image
+                    src={Logo}
+                    alt="BHGRE Logo"
+                    style="width:300px;height:auto;"
+                />
+            </a> -->
             <button id="newChatBtn" class="prompt-btn"
                 ><i class="fa-regular fa-pen-to-square"></i></button
             >
-            <!-- <div class="box">BHGRE<br />COPYRIGHT<br />All Rights Reserved</div> -->
         </div>
 
         <div class="container vh-100 thread-bottom-container">
             <div class="thread-top-container">
+                <div class="animation-container">
+                    <div id="concentric-rings" class="circle-container"></div>
+                </div>
                 <h3 class="text-center text-white">Where should we begin?</h3>
+                <!-- <div class="green_aura col-8 m-auto mt-4"></div> -->
             </div>
 
-            <div class="chat-wrapper col-8">
+            <div class="chat-wrapper col-12 col-md-8">
                 <div class="chat-box hidden" id="chatBox">
                     <!-- Messages will appear here -->
                 </div>
@@ -85,7 +95,7 @@ import Bug from "../assets/images/bug-fill.svg?raw";
                         placeholder="Type your question..."
                         rows="1"
                         required></textarea>
-                    <div class="w-100 d-flex justify-content-end">
+                    <div class="w-100 d-flex justify-content-end gap-1">
                         <button id="promptToggle" class="prompt-btn">
                             <Fragment set:html={Bug} /></button
                         >

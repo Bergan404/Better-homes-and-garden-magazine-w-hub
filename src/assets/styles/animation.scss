@@ -1,0 +1,179 @@
+.animation-container {
+//   position: relative;
+position: absolute;
+left: 0;
+right: 0;
+bottom: 20px;
+margin: auto;
+  width: 220px;
+  height: 220px;
+//   border: 1px solid rgba(255, 255, 255, 0.1);
+//   background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+  transition: border-color 0.3s ease;
+}
+
+.animation-container:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.animation-title {
+  margin-bottom: 10px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.circle-container {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-container::before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+//   background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0,102,0,0.3) 0%, transparent 70%);
+
+  animation: haloRotate 6s linear infinite;
+  z-index: -1;
+}
+
+@keyframes haloRotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.circle-container canvas {
+  filter: drop-shadow(0 0 6px rgba(0, 102, 0, 0.7));
+}
+
+.dot {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.line {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  transform-origin: 0% 50%;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Corner decorations */
+.corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  color: white;
+  opacity: 0;
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.animation-container:hover .corner {
+  opacity: 1;
+}
+
+.top-left {
+  top: -8px;
+  left: -8px;
+  transition-delay: 0s;
+}
+
+.top-right {
+  top: -8px;
+  right: -8px;
+  transform: rotate(90deg);
+  transition-delay: 0.1s;
+}
+
+.bottom-left {
+  bottom: -8px;
+  left: -8px;
+  transform: rotate(-90deg);
+  transition-delay: 0.2s;
+}
+
+.bottom-right {
+  bottom: -8px;
+  right: -8px;
+  transform: rotate(180deg);
+  transition-delay: 0.3s;
+}
+
+/* Animation keyframes */
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes reverseOrbit {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.1);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}

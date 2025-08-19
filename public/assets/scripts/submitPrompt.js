@@ -43,6 +43,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const top_container = document.querySelector(".thread-top-container");
     const chat_box = document.querySelector(".chat-box");
 
+    function showTyping() {
+        const wrapper = document.createElement("div");
+        wrapper.className = "message ai-msg typing-indicator";
+        wrapper.innerHTML = `<span></span><span></span><span></span>`;
+        chatBox.appendChild(wrapper);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        return wrapper;
+    }
+
+
     function activateFullHeightMode() {
         bottom_container.classList.add("full-height-mode");
         top_container.classList.add("d-none");
@@ -126,14 +136,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!userText) return;
 
         const isPrompt = !!selectedPrompt;
-        // const fullMessage = isPrompt ? `${selectedPromptText} ${userText}` : userText;
 
         appendMessage("user", userText);
         input.value = "";
 
         activateFullHeightMode();
 
-        const loadingMsg = appendMessage("ai", "...");
+        const typingMsg = showTyping();
 
         try {
             let response;
@@ -163,48 +172,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const data = await response.json();
-            loadingMsg.remove();
+            typingMsg.remove();
             const replyText = isPrompt ? data.result : data.reply;
             const dynamicSpeed = replyText.length > 500 ? 5 : 15;
             typeMessage("ai", replyText || "No response", dynamicSpeed);
+
         } catch (err) {
-            loadingMsg.remove();
+            typingMsg.remove();
             appendMessage("ai", "Error: Could not get a response.");
             console.error(err);
         }
     });
 
-    function typeMessage(sender, text, speed) {
-        const msg = document.createElement("div");
-        msg.className = `message ${sender}-msg`;
-        chatBox.appendChild(msg);
-        chatBox.scrollTop = chatBox.scrollHeight;
-
-        let index = 0;
-        let currentText = "";
-
-        function type() {
-            if (index < text.length) {
-                currentText += text.charAt(index);
-                msg.textContent = currentText;
-                index++;
-                chatBox.scrollTop = chatBox.scrollHeight;
-                setTimeout(type, speed);
-            } else {
-                msg.innerHTML = marked.parse(text);
-                saveChatHistory();
-            }
-        }
-
-        type();
-    }
-
     function saveChatHistory() {
         const messages = [];
         chatBox.querySelectorAll('.message').forEach(msg => {
+            const contentDiv = msg.querySelector('.message-content');
             messages.push({
                 sender: msg.classList.contains('user-msg') ? 'user' : 'ai',
-                text: msg.textContent,
+                html: contentDiv ? contentDiv.innerHTML : msg.textContent,
             });
         });
         localStorage.setItem('chatHistory', JSON.stringify(messages));
@@ -216,13 +202,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const messages = JSON.parse(history);
         messages.forEach(msg => {
-            appendMessage(msg.sender, msg.text);
+            appendMessage(msg.sender, msg.html, true);
         });
 
         activateFullHeightMode();
     }
 
     loadChatHistory();
+
+    function typeMessage(sender, text, speed) {
+        const msg = document.createElement("div");
+        msg.className = `message ${sender}-msg`;
+        chatBox.appendChild(msg);
+
+        const content = document.createElement("div");
+        content.className = "message-content";
+        content.innerHTML = marked.parse(text);
+        msg.appendChild(content);
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        let index = 0;
+
+        function type() {
+            if (index < text.length) {
+                const currentText = text.substring(0, index + 1);
+                // Parse only what we’ve revealed so far
+                content.innerHTML = marked.parse(currentText);
+                index++;
+                chatBox.scrollTop = chatBox.scrollHeight;
+                setTimeout(type, speed);
+
+                if (index === text.length && sender === "ai") {
+                    const toolbar = document.createElement("div");
+                    toolbar.className = "message-toolbar mt-2 d-flex gap-2";
+
+                    const copyBtn = document.createElement("button");
+                    copyBtn.className = "toolbar-btn";
+                    copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i>';
+                    copyBtn.title = "Copy";
+                    copyBtn.onclick = () => {
+                        navigator.clipboard.writeText(content.innerText);
+                        copyBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
+                        setTimeout(() => {
+                            copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i>';
+                        }, 2000);
+                    };
+
+                    const thumbsUpBtn = document.createElement("button");
+                    thumbsUpBtn.className = "toolbar-btn";
+                    thumbsUpBtn.innerHTML = '<i class="fa-regular fa-thumbs-up"></i>';
+                    thumbsUpBtn.title = "Good response";
+
+                    const thumbsDownBtn = document.createElement("button");
+                    thumbsDownBtn.className = "toolbar-btn";
+                    thumbsDownBtn.innerHTML = '<i class="fa-regular fa-thumbs-down"></i>';
+                    thumbsDownBtn.title = "Bad response";
+
+                    toolbar.append(copyBtn, thumbsUpBtn, thumbsDownBtn);
+                    msg.appendChild(toolbar);
+                }
+            } else {
+                saveChatHistory();
+            }
+        }
+
+        type();
+    }
 
     function appendMessage(sender, text) {
         const msg = document.createElement("div");
@@ -260,15 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
             thumbsDownBtn.className = "toolbar-btn";
             thumbsDownBtn.innerHTML = '<i class="fa-regular fa-thumbs-down"></i>';
             thumbsDownBtn.title = "Bad response";
-
-            // const shareBtn = document.createElement("button");
-            // shareBtn.className = "toolbar-btn";
-            // shareBtn.innerHTML = '<i class="fa-solid fa-share-nodes"></i>';
-            // shareBtn.title = "Share";
-            // shareBtn.onclick = () => {
-            //     navigator.clipboard.writeText(content.innerText);
-            //     alert("Response copied for sharing!");
-            // };
 
             toolbar.append(copyBtn, thumbsUpBtn, thumbsDownBtn);
             msg.appendChild(toolbar);
